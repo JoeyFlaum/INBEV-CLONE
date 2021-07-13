@@ -1,6 +1,13 @@
 import './IdPage.css'
 
+const addOrangeBorder = (e) =>{
+  const selectElements = document.querySelectorAll('select')
+  selectElements.forEach(item=>item.classList.remove("orange-border"))
+  e.target.classList.add("orange-border")
+}
+
 function IdPage() {
+
   return (
     <main id="id-page">
       <div className = 'background-image'></div>
@@ -11,7 +18,7 @@ function IdPage() {
         <br />
         please confirm you are of legal drinking age.
       </p>
-      <form onSubmit={(e)=>e.preventDefault()}>
+      <form onSubmit={(e)=>e.preventDefault()} onClick ={addOrangeBorder}>
         <select name = "country" className="locations">
           <option value="null">Location</option>
         </select>
@@ -29,6 +36,16 @@ function IdPage() {
         <button className="enter-site">ENTER</button>
       </form>
         <p>Enjoy Responsibly</p>
+        <footer>
+        <p>By submitting this form, you agree to be bound by the Terms of Service and Privacy Policy</p>
+        <div className = 'footer-links'>
+          <a href="https://www.ab-inbev.com/privacy-policy/" target='_blank' rel='noopener noreferrer'>PRIVACY POLICY </a> 
+          | <a href="https://www.ab-inbev.com/terms-conditions/" target='_blank' rel='noopener noreferrer'>TERMS & CONDITIONS </a> | 
+          <a href="https://www.ab-inbev.com/terms-conditions/california-residents-privacy-rights/" target='_blank' rel='noopener noreferrer'> DO NOT SELL MY PERSONAL INFORMATION</a>
+          </div>
+        <p>© 2021 Anheuser-Busch Companies LLC, St. Louis, MO 63118</p>
+        </footer>
+      <div className = 'color-strip-bottom'></div>
       </div>
     </main>
   );
