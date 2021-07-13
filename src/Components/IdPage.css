@@ -1,0 +1,97 @@
+#root{
+    --pure-white:#fff;
+    --orange-text:#f49c00;
+    --dim:rgb(0,0,0,0.5);
+    --txt-shdw:2px 2px black;
+}
+#id-page{
+    font-family: canada-type-gibson, sans-serif;
+    position: relative;
+    height:100vh;
+    width:100vw;
+    display:flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.background-image{
+    background-image: url('https://www.ab-inbev.com/content/dam/abinbev/our-brands/our-beer/desktop/Marquee.png');
+    background-repeat: no-repeat;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-position: center;
+    background-size: cover;
+}
+.background-image::after{
+    content:"";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: var(--dim);
+}
+
+.id-wrapper{
+    position:absolute;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    z-index: 3;
+}
+
+h1{
+    color:var(--pure-white);
+    font-size: 3.2rem;
+    margin-bottom:0;    
+}
+form{
+    width: 430px;
+    font-size: 2rem;
+}
+.dob-wrapper{
+    display: flex;
+    justify-content: space-between;
+    margin-top: 1.2rem;
+}
+select{
+    font-size: 1rem;
+    padding:.5rem;
+}
+.locations, button{
+    width: 100%;
+    height: 50px;
+    border-radius: 4px;
+}
+#month{
+    flex-basis: 50%;
+    height: 50px;
+    border-radius: 4px;
+    margin-right:1rem;
+}
+#day, #year{
+    flex-basis: 25%;
+    height: 50px;
+    border-radius: 4px;
+}
+#day{
+    margin-right:1rem;
+}
+p{
+    font-size: 1.35rem;
+    font-weight: 500;
+    color:var(--orange-text);
+    text-shadow: var(--txt-shdw);
+    text-align: center;
+}
+button{
+    margin-top: 1.2rem;
+    background-color:var(--orange-text);
+    color:var(--pure-white);
+    width:100%;
+}
+
