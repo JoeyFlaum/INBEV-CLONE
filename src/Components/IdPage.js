@@ -1,15 +1,16 @@
 import './IdPage.css'
 
 const addOrangeBorder = (e) =>{
+  const target = e.target
   const selectElements = document.querySelectorAll('select')
   selectElements.forEach(item=>item.classList.remove("orange-border"))
-  e.target.classList.add("orange-border")
+  if(target.localName === 'select'){target.classList.add("orange-border")}
 }
 
 function IdPage() {
 
   return (
-    <main id="id-page">
+    <main id="id-page" onClick = {addOrangeBorder}>
       <div className = 'background-image'></div>
       <div className = 'id-wrapper'>
       <h1>Can we see some ID?</h1>
