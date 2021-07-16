@@ -4,6 +4,7 @@
     --ab-red:rgb(180, 38, 2);
     --dim:rgb(0,0,0,0.5);
     --txt-shdw:2px 2px black;
+    
 }
 #id-page{
     font-family: canada-type-gibson, sans-serif;
@@ -37,72 +38,71 @@
 }
 
 .id-wrapper{
-    margin-top: 0;
+    margin-top: 180px;
+    margin-bottom: 184px;
     position:absolute;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     z-index: 3;
+    height: auto;
 }
 .id-wrapper > p:first-of-type{
-    margin-top:0.75em;
-    margin-bottom:1.65em;
+    margin-top:0.747em;
+    margin-bottom:1.54845em;
     line-height: 1.5em;
 }
 h1{
     color:var(--pure-white);
     font-size: 3.5rem;
-    margin-top: .7rem;
-    margin-bottom:0.012em; 
-    text-shadow: var(--txt-shdw);   
+    margin-top: .766rem;
+    margin-bottom:0.0195em; 
+    text-shadow: var(--txt-shdw);
+    text-align: center;   
 }
 form{
-    width: 430px;
+    width: 432px;
     font-size: 2rem;
 }
 .dob-wrapper{
     display: flex;
     justify-content: space-between;
-    margin-top: 1.2rem;
+    margin-top: 1.25rem;
     align-items: center;
 }
 select{
     font-size: 1rem;
-    padding:1em;
+    padding: 12px 16.75px;
+    text-align: center;
     appearance: none;
     background-image: url('https://www.ab-inbev.com/etc.clientlibs/abinbev/clientlibs/clientlib-site/resources/style-assets/chevron.svg');
     background-repeat: no-repeat;
     background-position-y: center;
-    background-position-x: calc(100% - 1rem);
-    background-size: 1rem;
+    background-position-x: calc(100% - 1.05rem);
+    background-size: 1em;
     outline:0px;
-    height: 3rem;
-    border-radius: 4px;
+    height: 3.06em;
+    border-radius: 5px;
 }
 .orange-border{
     border:1px solid var(--orange-text)
 }
 .locations{
     width: 100%;
-    margin-bottom: .25em;
+    margin-bottom: .24em;
 
 }
-button{
-    width: 100%;
-    height: 3rem;
-    border-radius: 4px;
-}
+
 #month{
-    flex-basis: 50%;
-
-    margin-right:1rem;
+    flex-basis: 51%;
+    margin-right: .91em;
 }
 #day, #year{
     flex-basis: 25%;
 }
 #day{
-    margin-right:1rem;
+    margin-right: .91em;
 }
 p{
     font-size: 1.25rem;
@@ -111,12 +111,23 @@ p{
     text-shadow: var(--txt-shdw);
     text-align: center;
 }
+.id-wrapper > p:nth-of-type(2){
+    margin-top:.6em;
+    margin-bottom:1.4em;
+}
+
 button{
     margin-top: 1.5rem;
+    font-size: .5em;
+    font-weight: 700;
     background-color:var(--orange-text);
     color:var(--pure-white);
     outline: none;
     border:0;
+    width: 100%;
+    height: 3rem;
+    border-radius: 7px;
+    cursor: pointer;
 }
 
 footer{
@@ -128,6 +139,7 @@ footer{
 
 footer p{
     font-size:1rem;
+    margin:.9em;
 }
 
 footer *{
@@ -135,10 +147,15 @@ footer *{
     text-decoration: none;
     font-weight: 300;
 }
-
-.footer-links,.footer-links a{
+.footer-links{
     font-size: calc(1rem / 1.3);
-    font-weight: 500;
+    margin-top:.25em;
+    letter-spacing:.025px;
+    text-align: center;
+}
+
+footer a{
+    font-weight:700;
 }
 
 .color-strip-bottom{
@@ -148,4 +165,41 @@ footer *{
     width: 100vw;
     background-image: linear-gradient(to right,var(--ab-red) , var(--orange-text));
     z-index: 4;
+}
+
+@media screen and (max-width:1030px){
+    h1{
+        font-size: 2.125em;
+}
+form{
+    width:332px;
+}
+.id-wrapper > p:first-of-type{
+    font-size: 1em;
+    font-weight: 100;
+}
+#month{
+    flex-basis: 51%;
+    margin-right: .25em;
+}
+#day, #year{
+    flex-basis: 25%;
+}
+#day{
+    margin-right: .25em;
+    
+}
+select{
+    background-position-x: calc(100% - .5rem);
+}
+
+}
+
+@media screen and (max-height:600px){
+
+
+.id-wrapper{
+    margin-bottom:10px;
+}
+
 }
