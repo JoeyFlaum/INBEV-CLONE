@@ -154,6 +154,15 @@ footer *{
     text-align: center;
 }
 
+.link-separator::before{
+    content:"\"";
+    color:transparent;
+}
+.link-separator::after{
+    content:"\"";
+    color:transparent;
+}
+
 footer a{
     font-weight:700;
 }
@@ -200,6 +209,12 @@ select{
 
 .id-wrapper{
     margin-bottom:10px;
+}
+
+}
+@media screen and (max-width:350px){
+    h1{
+        font-size: 1.875em;
 }
 
 }

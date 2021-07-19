@@ -1,5 +1,5 @@
 import './App.css';
-import IdPage from './Components/IdPage'
+import IdPage from './Components/IdPage/IdPage'
 
 function App() {
   return (
