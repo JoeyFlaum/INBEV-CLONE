@@ -12,6 +12,17 @@ const addOrangeBorder = (e) => {
   }
 };
 
+const getYears = () => {
+    const currentDate = new Date().getFullYear()
+    let years = [currentDate]
+    for (let i = 1;i<100;i++){
+      // console.log(years)
+      years.push(currentDate-i)
+    }
+    // console.log(years)
+    return years
+}
+
 function IdPage() {
   return (
     <main id="id-page" onClick={addOrangeBorder}>
@@ -26,22 +37,30 @@ function IdPage() {
         <form onSubmit={(e) => e.preventDefault()} onClick={addOrangeBorder}>
           <select name="country" className="locations">
             <option value="null">Location</option>
-            {countries.map((country) => {
-              return <option value={country.code}>{country.name}</option>;
+            {countries.map((country,i) => {
+              return <option key = {country + i} value={country.code}>{country.name}</option>;
             })}
           </select>
           <div className="dob-wrapper">
             <select name="month" id="month" className="DOB">
               <option value="0">Month</option>
               {months.map((month,i)=>{
-                return <option value={i+1}>{month}</option>
+                return <option key = {month+i} value={i+1}>{month}</option>
               })}
             </select>
             <select name="day" id="day" className="DOB">
               <option value="null">Day</option>
+              {[...Array(31)].map((day,i)=>{
+                return <option key = {"day"+(i+1)} value={i+1}>{i+1}</option>
+              })}
             </select>
             <select name="year" id="year" className="DOB">
               <option value="null">Year</option>
+              {[...getYears()].map((year)=>{
+                return <option key= {year} value={year}>{year}</option>
+              })
+              }
+
             </select>
           </div>
           <button className="enter-site">ENTER</button>

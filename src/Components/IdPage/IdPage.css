@@ -38,8 +38,7 @@
 }
 
 .id-wrapper{
-    margin-top: 180px;
-    margin-bottom: 184px;
+    margin:auto;
     position:absolute;
     display: flex;
     flex-direction: column;
@@ -188,16 +187,19 @@ footer a{
 form{
     width:332px;
 }
+.id-wrapper p{
+    font-size: 1rem;
+}
 p{
     font-weight: 100;
 }
 
 #month{
-    flex-basis: 51%;
+    flex-basis: 45%;
     margin-right: .25em;
 }
 #day, #year{
-    flex-basis: 25%;
+    flex-basis: 30%;
 }
 #day{
     margin-right: .25em;
@@ -209,13 +211,12 @@ select{
 
 }
 
-@media screen and (max-height:600px){
+@media screen and (max-height:500px){
 
 
 .id-wrapper{
-    margin-bottom:10px;
+    margin-top: 200px;
 }
-
 }
 @media screen and (max-width:350px){
     h1{
