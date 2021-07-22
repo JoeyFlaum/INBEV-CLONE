@@ -1,5 +1,7 @@
 import "./IdPage.css";
 import countries from "./CountryData";
+import { useState } from "react";
+import AgeGate from "./AgeGate";
 
 let months = ["January","February","March","April","May","June","July","August","September","October","November","December"];
 
@@ -13,17 +15,31 @@ const addOrangeBorder = (e) => {
 };
 
 const getYears = () => {
-    const currentDate = new Date().getFullYear()
+    const currentDate = new Date().getFullYear()//current year
     let years = [currentDate]
     for (let i = 1;i<100;i++){
-      // console.log(years)
-      years.push(currentDate-i)
+      years.push(currentDate-i)//adds 99 prior years to years array
     }
-    // console.log(years)
     return years
 }
+const ageGate = (e,isLegalAge) => {
+  e.preventDefault()
+  const currentDay = new Date().getDay()
+  const currentMonth = new Date().getMonth()
+  const currentYear = new Date().getFullYear()
+  console.log(currentYear,currentMonth,currentDay,isLegalAge(true))
 
-function IdPage() {
+}
+
+
+function IdPage({isLegalAge}) {
+const [day, setDay] = useState("");
+const [month, setMonth] = useState("");
+const [year, setYear] = useState("");
+const [country, setCountry] = useState(countries[0].code);
+const [legal, setLegal] = useState(false);
+
+console.log(year,day,month)
   return (
     <main id="id-page" onClick={addOrangeBorder}>
       <div className="background-image"></div>
@@ -34,7 +50,7 @@ function IdPage() {
           <br />
           please confirm you are of legal drinking age.
         </p>
-        <form onSubmit={(e) => e.preventDefault()} onClick={addOrangeBorder}>
+        <form onClick={addOrangeBorder} onSubmit ={(e)=>ageGate(e,isLegalAge)}>
           <select name="country" className="locations">
             <option value="null">Location</option>
             {countries.map((country,i) => {
@@ -42,25 +58,24 @@ function IdPage() {
             })}
           </select>
           <div className="dob-wrapper">
-            <select name="month" id="month" className="DOB">
+            <select name="month" id="month" className="DOB" onChange = {(e)=>setMonth(e.target.value)}>
               <option value="0">Month</option>
               {months.map((month,i)=>{
                 return <option key = {month+i} value={i+1}>{month}</option>
               })}
             </select>
-            <select name="day" id="day" className="DOB">
+            <select name="day" id="day" className="DOB" onChange = {(e)=>setDay(e.target.value)}>
               <option value="null">Day</option>
-              {[...Array(31)].map((day,i)=>{
+              {[...Array(31)].map((day,i)=>{//maps 31 days into options
                 return <option key = {"day"+(i+1)} value={i+1}>{i+1}</option>
               })}
             </select>
-            <select name="year" id="year" className="DOB">
+            <select name="year" id="year" className="DOB" onChange = {(e)=>setYear(e.target.value)}>
               <option value="null">Year</option>
-              {[...getYears()].map((year)=>{
+              {[...getYears()].map((year,i,arr)=>{//[getYears][0] also works 
                 return <option key= {year} value={year}>{year}</option>
               })
               }
-
             </select>
           </div>
           <button className="enter-site">ENTER</button>
