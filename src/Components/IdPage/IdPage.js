@@ -1,6 +1,7 @@
 import "./IdPage.css";
 import countries from "./CountryData";
 import { useState } from "react";
+import combineCountries from "./CountriesCombined";
 import AgeGate from "./AgeGate";
 
 let months = ["January","February","March","April","May","June","July","August","September","October","November","December"];
@@ -27,8 +28,8 @@ const ageGate = (e,isLegalAge) => {
   const currentDay = new Date().getDay()
   const currentMonth = new Date().getMonth()
   const currentYear = new Date().getFullYear()
-  console.log(currentYear,currentMonth,currentDay,isLegalAge(true))
-
+  isLegalAge(true)
+  console.log(currentYear,currentMonth,currentDay)
 }
 
 
@@ -39,7 +40,7 @@ const [year, setYear] = useState("");
 const [country, setCountry] = useState(countries[0].code);
 const [legal, setLegal] = useState(false);
 
-console.log(year,day,month)
+console.log(year,day,month,combineCountries(),'IDPAGE')
   return (
     <main id="id-page" onClick={addOrangeBorder}>
       <div className="background-image"></div>
