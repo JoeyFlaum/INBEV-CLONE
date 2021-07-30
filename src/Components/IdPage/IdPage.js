@@ -1,19 +1,9 @@
 import "./IdPage.css";
-import countries from "./CountryData";
 import { useState } from "react";
-import combineCountries from "./CountriesCombined";
+import countries from "./CountriesCombined";
 import AgeGate from "./AgeGate";
 
 let months = ["January","February","March","April","May","June","July","August","September","October","November","December"];
-
-const addOrangeBorder = (e) => {
-  const target = e.target;
-  const selectElements = document.querySelectorAll("select");
-  selectElements.forEach((item) => item.classList.remove("orange-border"));
-  if (target.localName === "select") {
-    target.classList.add("orange-border");
-  }
-};
 
 const getYears = () => {
     const currentDate = new Date().getFullYear()//current year
@@ -23,13 +13,14 @@ const getYears = () => {
     }
     return years
 }
-const ageGate = (e,isLegalAge) => {
+const ageGate = (e,{isLegalAge,day, month, year, country}) => {
   e.preventDefault()
-  const currentDay = new Date().getDay()
-  const currentMonth = new Date().getMonth()
-  const currentYear = new Date().getFullYear()
-  isLegalAge(true)
-  console.log(currentYear,currentMonth,currentDay)
+  //get legal age of country selected
+  const countryDrinkAge = countries().filter((arrayItem)=>arrayItem.code === country)[0].age
+  const userAge = new Date(year,month,day).getTime()
+  const today = new Date().getTime()
+  const ageCheck = Math.floor((today-userAge)/(1000 * 60 * 60 * 24 * 365.25))
+  ageCheck >= countryDrinkAge  ? isLegalAge(true):isLegalAge(false)//sends true or false to App.js
 }
 
 
@@ -37,12 +28,10 @@ function IdPage({isLegalAge}) {
 const [day, setDay] = useState("");
 const [month, setMonth] = useState("");
 const [year, setYear] = useState("");
-const [country, setCountry] = useState(countries[0].code);
-const [legal, setLegal] = useState(false);
+const [country, setCountry] = useState("");
 
-console.log(year,day,month,combineCountries(),'IDPAGE')
   return (
-    <main id="id-page" onClick={addOrangeBorder}>
+    <main id="id-page" >
       <div className="background-image"></div>
       <div className="id-wrapper">
         <h1>Can we see some ID?</h1>
@@ -51,18 +40,18 @@ console.log(year,day,month,combineCountries(),'IDPAGE')
           <br />
           please confirm you are of legal drinking age.
         </p>
-        <form onClick={addOrangeBorder} onSubmit ={(e)=>ageGate(e,isLegalAge)}>
-          <select name="country" className="locations">
+        <form  onSubmit ={(e)=>ageGate(e,{isLegalAge, day, month, year, country})}>
+          <select name="country" className="locations" onChange = {(e)=>setCountry(e.target.value)}>
             <option value="null">Location</option>
-            {countries.map((country,i) => {
+            {countries().map((country,i) => {//maps over array created by function that combines CountryData and DrinkingAgeByCountry
               return <option key = {country + i} value={country.code}>{country.name}</option>;
             })}
           </select>
           <div className="dob-wrapper">
             <select name="month" id="month" className="DOB" onChange = {(e)=>setMonth(e.target.value)}>
-              <option value="0">Month</option>
+              <option value={null}>Month</option>
               {months.map((month,i)=>{
-                return <option key = {month+i} value={i+1}>{month}</option>
+                return <option key = {month+i} value={i}>{month}</option>
               })}
             </select>
             <select name="day" id="day" className="DOB" onChange = {(e)=>setDay(e.target.value)}>
@@ -73,7 +62,7 @@ console.log(year,day,month,combineCountries(),'IDPAGE')
             </select>
             <select name="year" id="year" className="DOB" onChange = {(e)=>setYear(e.target.value)}>
               <option value="null">Year</option>
-              {[...getYears()].map((year,i,arr)=>{//[getYears][0] also works 
+              {[...getYears()].map((year)=>{//[getYears][0] also works 
                 return <option key= {year} value={year}>{year}</option>
               })
               }

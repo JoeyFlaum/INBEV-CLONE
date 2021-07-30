@@ -1,4 +1,4 @@
-let countries = [ 
+let countryData = [ 
   {name: 'Afghanistan', code: 'AF'}, 
   {name: 'Åland Islands', code: 'AX'}, 
   {name: 'Albania', code: 'AL'}, 
@@ -246,4 +246,4 @@ let countries = [
 
 
 
-export default countries
+export default countryData

@@ -1,21 +1,20 @@
-import countries from "./CountryData";
+import countryData from "./CountryData";
 import drinkingAgeByCounty from "./DrinkingAgeByCountry";
 
-function combineCountries() {
+function countries() {
   let countriesCombined = [];
   let countryAge = Object.values(drinkingAgeByCounty).reduce((a, b) =>
     a.concat(b)
   );
 
-  countries.forEach((object, i) => {
-    let match = countryAge.filter((obj) => obj.code === object.code);
+  countryData.forEach((object,i) => {
+    let match = countryAge.filter((obj) => obj.code === object.code);//finds the match for callback 
     match.length === 1
       ? countriesCombined.push({ ...object, ...match[0]})
       :countriesCombined.push(object)
       if (!countriesCombined[i].age){countriesCombined[i].age = null}
   });
-  console.log(countriesCombined);
   return countriesCombined;
 }
 
-export default combineCountries;
+export default countries;

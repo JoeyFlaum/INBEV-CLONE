@@ -89,9 +89,6 @@ select *{
     width:100%;
 }
 
-.orange-border{
-    border:1px solid var(--orange-text)
-}
 .locations{
     width: 100%;
     margin-bottom: .24em;
@@ -208,7 +205,9 @@ p{
 select{
     background-position-x: calc(100% - .5rem);
 }
-
+select:focus{
+    border:1px solid var(--orange-text);
+}
 }
 
 @media screen and (max-height:500px){
