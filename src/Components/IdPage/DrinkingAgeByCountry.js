@@ -392,7 +392,7 @@ const drinkingAgeByCounty = {
     {
       code: "BD",
       name: "Bangladesh",
-      age: null,
+      age: 18,
     },
     {
       code: "BN",

@@ -1,37 +1,40 @@
 import "./IdPage.css";
 import { useState } from "react";
-import countries from "./CountriesCombined";
+import countries from "./CountriesCombined"; //TO DO: Countries function re-renders on all updates. Only needed once.
 import AgeGate from "./AgeGate";
 
-let months = ["January","February","March","April","May","June","July","August","September","October","November","December"];
+let months = [
+  "January",
+  "February",
+  "March",
+  "April",
+  "May",
+  "June",
+  "July",
+  "August",
+  "September",
+  "October",
+  "November",
+  "December",
+];
 
 const getYears = () => {
-    const currentDate = new Date().getFullYear()//current year
-    let years = [currentDate]
-    for (let i = 1;i<100;i++){
-      years.push(currentDate-i)//adds 99 prior years to years array
-    }
-    return years
-}
-const ageGate = (e,{isLegalAge,day, month, year, country}) => {
-  e.preventDefault()
-  //get legal age of country selected
-  const countryDrinkAge = countries().filter((arrayItem)=>arrayItem.code === country)[0].age
-  const userAge = new Date(year,month,day).getTime()
-  const today = new Date().getTime()
-  const ageCheck = Math.floor((today-userAge)/(1000 * 60 * 60 * 24 * 365.25))
-  ageCheck >= countryDrinkAge  ? isLegalAge(true):isLegalAge(false)//sends true or false to App.js
-}
-
-
-function IdPage({isLegalAge}) {
-const [day, setDay] = useState("");
-const [month, setMonth] = useState("");
-const [year, setYear] = useState("");
-const [country, setCountry] = useState("");
+  const currentDate = new Date().getFullYear(); //current year
+  let years = [currentDate];
+  for (let i = 1; i < 100; i++) {
+    years.push(currentDate - i); //adds 99 prior years to years array
+  }
+  return years;
+};
+export default function IdPage({ isLegalAge }) {
+  //pass in function from App.js
+  const [day, setDay] = useState("");
+  const [month, setMonth] = useState("");
+  const [year, setYear] = useState("");
+  const [country, setCountry] = useState("");
 
   return (
-    <main id="id-page" >
+    <main id="id-page">
       <div className="background-image"></div>
       <div className="id-wrapper">
         <h1>Can we see some ID?</h1>
@@ -40,32 +43,74 @@ const [country, setCountry] = useState("");
           <br />
           please confirm you are of legal drinking age.
         </p>
-        <form  onSubmit ={(e)=>ageGate(e,{isLegalAge, day, month, year, country})}>
-          <select name="country" className="locations" onChange = {(e)=>setCountry(e.target.value)}>
-            <option value="null">Location</option>
-            {countries().map((country,i) => {//maps over array created by function that combines CountryData and DrinkingAgeByCountry
-              return <option key = {country + i} value={country.code}>{country.name}</option>;
+        <form
+          onSubmit={(e) => {
+            e.preventDefault();
+               AgeGate({ isLegalAge, day, month, year, country, countries })
+          }}
+        >
+          <select
+            name="country"
+            className="locations"
+            onChange={(e) => setCountry(e.target.value)}
+          >
+            <option value="">Location</option>
+            {countries().map((country, i) => {
+              //maps over array created by function that combines CountryData and DrinkingAgeByCountry
+              return (
+                <option key={country + i} value={country.code}>
+                  {country.name}
+                </option>
+              );
             })}
           </select>
           <div className="dob-wrapper">
-            <select name="month" id="month" className="DOB" onChange = {(e)=>setMonth(e.target.value)}>
-              <option value={null}>Month</option>
-              {months.map((month,i)=>{
-                return <option key = {month+i} value={i}>{month}</option>
+            <select
+              name="month"
+              id="month"
+              className="DOB"
+              onChange={(e) => setMonth(e.target.value)}
+            >
+              <option value="">Month</option>
+              {months.map((month, i) => {
+                return (
+                  <option key={month + i} value={i}>
+                    {month}
+                  </option>
+                );
               })}
             </select>
-            <select name="day" id="day" className="DOB" onChange = {(e)=>setDay(e.target.value)}>
-              <option value="null">Day</option>
-              {[...Array(31)].map((day,i)=>{//maps 31 days into options
-                return <option key = {"day"+(i+1)} value={i+1}>{i+1}</option>
+            <select
+              name="day"
+              id="day"
+              className="DOB"
+              onChange={(e) => setDay(e.target.value)}
+            >
+              <option value="">Day</option>
+              {[...Array(31)].map((day, i) => {
+                //maps 31 days into options
+                return (
+                  <option key={"day" + (i + 1)} value={i + 1}>
+                    {i + 1}
+                  </option>
+                );
               })}
             </select>
-            <select name="year" id="year" className="DOB" onChange = {(e)=>setYear(e.target.value)}>
-              <option value="null">Year</option>
-              {[...getYears()].map((year)=>{//[getYears][0] also works 
-                return <option key= {year} value={year}>{year}</option>
-              })
-              }
+            <select
+              name="year"
+              id="year"
+              className="DOB"
+              onChange={(e) => setYear(e.target.value)}
+            >
+              <option value="">Year</option>
+              {[...getYears()].map((year) => {
+                //[getYears][0] also works
+                return (
+                  <option key={year} value={year}>
+                    {year}
+                  </option>
+                );
+              })}
             </select>
           </div>
           <button className="enter-site">ENTER</button>
@@ -109,5 +154,3 @@ const [country, setCountry] = useState("");
     </main>
   );
 }
-
-export default IdPage;
