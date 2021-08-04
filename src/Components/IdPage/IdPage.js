@@ -26,33 +26,63 @@ const getYears = () => {
   }
   return years;
 };
-export default function IdPage({ isLegalAge }) {
+export default function IdPage({ isLegalAge, formSubmitted }) {
   //pass in function from App.js
   const [day, setDay] = useState("");
   const [month, setMonth] = useState("");
   const [year, setYear] = useState("");
   const [country, setCountry] = useState("");
-
+  // const [fullCountryName, setFullCountryName] = useState("");
+  const [legalAge, setLegalAge] = useState("");
   return (
     <main id="id-page">
       <div className="background-image"></div>
       <div className="id-wrapper">
-        <h1>Can we see some ID?</h1>
-        <p>
-          As part of our commitment to responsible drinking,
-          <br />
-          please confirm you are of legal drinking age.
-        </p>
+        {formSubmitted === undefined || formSubmitted ? (// formSubmitted is undefined by default, true if old enough to enter, false if underage
+          <>
+            <h1>Can we see some ID?</h1>
+            <p>
+              As part of our commitment to responsible drinking,
+              <br />
+              please confirm you are of legal drinking age.
+            </p>
+          </>
+        ) : (
+          <>
+            <h1>
+              Sorry,{" "}
+              {legalAge || legalAge === 0
+                ? `you must be ${legalAge} or older to view this site`
+                : `drinking is not legal in ${
+                    countries().filter(
+                      (arrayItem) => arrayItem.code === country
+                    )[0].name
+                  }`}
+            </h1>
+            <p></p>
+          </>
+        )}
         <form
           onSubmit={(e) => {
             e.preventDefault();
-               AgeGate({ isLegalAge, day, month, year, country, countries })
+            AgeGate({
+              isLegalAge,
+              day,
+              month,
+              year,
+              country,
+              countries,
+              setLegalAge,
+            });
           }}
         >
           <select
             name="country"
             className="locations"
-            onChange={(e) => setCountry(e.target.value)}
+            onChange={(e) => {
+              setCountry(e.target.value);
+              isLegalAge(undefined)//resets form to original state variable that gets reset is "formSubmitted"
+            }}
           >
             <option value="">Location</option>
             {countries().map((country, i) => {
