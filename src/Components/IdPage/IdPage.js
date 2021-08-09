@@ -26,13 +26,12 @@ const getYears = () => {
   }
   return years;
 };
-export default function IdPage({ isLegalAge, formSubmitted }) {
+export default function IdPage({ isLegalAge, formSubmitted,loginAttempts,setloginAttempts}) {
   //pass in function from App.js
   const [day, setDay] = useState("");
   const [month, setMonth] = useState("");
   const [year, setYear] = useState("");
   const [country, setCountry] = useState("");
-  // const [fullCountryName, setFullCountryName] = useState("");
   const [legalAge, setLegalAge] = useState("");
   return (
     <main id="id-page">
@@ -73,6 +72,8 @@ export default function IdPage({ isLegalAge, formSubmitted }) {
               country,
               countries,
               setLegalAge,
+              loginAttempts,
+              setloginAttempts
             });
           }}
         >
