@@ -2,6 +2,7 @@ import "./IdPage.css";
 import { useState } from "react";
 import countries from "./CountriesCombined"; //TO DO: Countries function re-renders on all updates. Only needed once.
 import AgeGate from "./AgeGate";
+import ColorStrip from "../../Components/ColorStrip/ColorStrip";
 
 let months = [
   "January",
@@ -180,7 +181,7 @@ export default function IdPage({ isLegalAge, formSubmitted,loginAttempts,setlogi
           </div>
           <p>© 2021 Anheuser-Busch Companies LLC, St. Louis, MO 63118</p>
         </footer>
-        <div className="color-strip-bottom"></div>
+        <ColorStrip additionalClassName = "fixed-bottom"/>
       </div>
     </main>
   );

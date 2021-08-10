@@ -168,12 +168,9 @@ footer a{
     font-weight:700;
 }
 
-.color-strip-bottom{
+.color-strip.fixed-bottom{
     position:fixed;
     bottom:0;
-    height: 4px;
-    width: 100vw;
-    background-image: linear-gradient(to right,var(--ab-red) , var(--orange-text));
     z-index: 4;
 }
 

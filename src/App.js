@@ -1,7 +1,6 @@
-import React, { useEffect } from "react";
 import "./App.css";
-import IdPage from "./Components/IdPage/IdPage";
-import HomePage from "./Components/HomePage/HomePage";
+import IdPage from "./Pages/IdPage/IdPage";
+import HomePage from "./Pages/HomePage/HomePage";
 import { useState } from "react";
 
 function underage() {
@@ -11,7 +10,6 @@ function underage() {
 export default function App() {
   const [islegalAge, setisLegalAge] = useState();
   const [loginAttempts, setloginAttempts] = useState(0);
-
   console.log("app.js, ", islegalAge, loginAttempts);
   return (
     <div className="App">
@@ -24,7 +22,7 @@ export default function App() {
             setloginAttempts ={setloginAttempts}
           />
         ) : (
-          <HomePage />
+          <HomePage/>
         )
       ) : (
         underage()
