@@ -8,7 +8,7 @@ function underage() {
 }
 
 export default function App() {
-  const [islegalAge, setisLegalAge] = useState();
+  const [islegalAge, setisLegalAge] = useState(true);//TODO: delete true from state. true is used to bypass agegate for development purposes
   const [loginAttempts, setloginAttempts] = useState(0);
   console.log("app.js, ", islegalAge, loginAttempts);
   return (

@@ -1,0 +1,19 @@
+.list-main-tabs{
+    display:flex;
+    font-weight: 500;
+}
+.list-sub-tabs-1{
+    display:flex;
+    flex-direction: column;
+}
+.list-sub-tabs-2{
+    display:flex;
+    flex-direction: column;
+}
+li{
+        list-style: none;
+        cursor:pointer;
+        width:100%;
+}
+
+a{text-decoration: none; color:grey}
