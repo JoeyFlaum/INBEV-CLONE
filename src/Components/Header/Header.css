@@ -1,19 +1,42 @@
-.list-main-tabs{
-    display:flex;
-    font-weight: 500;
+.list-main-tabs {
+  /*main header tabs */
+  display: flex;
+  font-weight: 500;
 }
-.list-sub-tabs-1{
-    display:flex;
-    flex-direction: column;
-}
-.list-sub-tabs-2{
-    display:flex;
-    flex-direction: column;
-}
-li{
-        list-style: none;
-        cursor:pointer;
-        width:100%;
+.main-tab,
+.sub-tab-1 {
+  position: relative;
 }
 
-a{text-decoration: none; color:grey}
+.list-sub-tabs-1,
+.list-sub-tabs-2 {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  visibility: hidden;
+}
+.list-sub-tabs-1.active,.list-sub-tabs-2.active{
+  visibility: visible;
+}
+
+.list-sub-tabs-1 {
+  left: -2.5rem;
+}
+.list-sub-tabs-2 {
+  left: 10rem;
+}
+li {
+  list-style: none;
+  cursor: pointer;
+  width: 100%;
+}
+a {
+  text-decoration: none;
+  color: grey;
+}
+.list-sub-tabs-1.active {
+  background: lightblue;
+}
+.list-sub-tabs-2.active {
+  background: blue;
+}

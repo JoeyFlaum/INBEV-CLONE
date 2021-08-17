@@ -10,13 +10,13 @@ export default function HomePage(){
     return(
         <>
         <Header/>
-        <Hero/>
+        {/* <Hero/>
         <Mission/>
         <Stories/>
         <div>grey divider</div>
         <Footer/>
         <Search/>
-        <h1>HOME PAGE</h1>
+        <h1>HOME PAGE</h1> */}
         </>
         )
     
