@@ -7,7 +7,11 @@
 .sub-tab-1 {
   position: relative;
 }
-
+.list-main-tabs a{
+  display:flex;
+  flex-grow: 1;
+  height: 100%;
+}
 .list-sub-tabs-1,
 .list-sub-tabs-2 {
   display: flex;
