@@ -8,31 +8,57 @@ export default function Header() {
   const [tabX, settabX] = useState();
   const [tabY, settabY] = useState();
   const [activeMainTab, setactiveMainTab] = useState();
-  const [activeMenu, setactiveMenu] = useState([]);
+  const [subMenu, setsubMenu] = useState([]);
 
   //when window/menu x and y match, menu should be visible
-  const menuShow = () => {
-    // console.log("value",activeMenu);
-    activeMainTab.classList.add("active");
-    // return activeMenu.forEach((element) => element.classList.add("active"));
+  const menuShow = (e) => {
+    if (
+      //set active main tab to track which tab list is active using dataset
+      e.target.classList.value.toLowerCase().includes("main-tab") && //only store "main-tab" in activeMainTab
+      (!activeMainTab || // <==== if active main tab is undefined
+        e.target.dataset.tabCollection !== activeMainTab.dataset.tabCollection) //compare target element to activeMainTab
+    ) {
+      setactiveMainTab(e.target.nextSibling); //sets UL element for drop down
+    }
+
+    if (e.target.classList.value.includes("has-submenu")) {
+      if (subMenu) {
+        if (!subMenu.find((item) => item === e.target.nextSibling)) {
+          setsubMenu((oldArray = Array.from(subMenu)) => [
+            ...oldArray,
+            e.target.nextSibling,
+          ]);
+        }
+      } else {
+        setsubMenu(e.target.nextSibling);
+      }
+    }
+    activeMainTab?.classList.add("active");
+
+    // return subMenu.forEach((element) => element.classList.add("active"));
   };
   //when leaving menu, menu should be hidden
-  const menuHide = (e) => {
-    // const newArray = Array.from(
-    //   activeMenu.filter((element) => element !== e.target.nextSibling)
-    // );
-    // setactiveMenu(newArray)
-    // if(e.target.nextSibling.classList.value.includes("active")){e.target.nextSibling.classList.remove("active")}
+  const menuHide = () => {
+    activeMainTab.classList.remove("active");
   };
+  console.log(subMenu);
   useEffect(() => {
     //remove active class from dataset that does not match activeMainTab
-    if(activeMainTab&&activeMenu){
-    const inactiveMenuArray = Array.from(activeMenu.filter((element) => element.dataset.tab !== activeMainTab.dataset.tabCollection))
-    inactiveMenuArray.forEach(element=>element.classList.remove("active"))}
-      //compare activeMainTab to activeMenu
-        // if datasets do not match remove class "active" from elements that do not match 
-        // remove non matches from activeMenu  
-  }, [activeMainTab, activeMenu]);
+    //compare activeMainTab to subMenu
+    // if datasets do not match remove class "active" from elements that do not match
+    if (activeMainTab && subMenu) {
+      const arraySubMenu = [...subMenu];
+      const inactiveSubMenu = arraySubMenu.filter(
+        (element) => element.dataset.tabCollection !== activeMainTab.dataset.tabCollection
+      );
+      inactiveSubMenu.forEach((element) => element.classList.remove("active"));
+      // remove non matches from subMenu
+      // const newSubMenu = arraySubMenu.filter(
+      //   (element) => element.dataset.tabCollection === activeMainTab.dataset.tabCollection
+      // );
+      // setsubMenu(newSubMenu)
+    }
+  }, [activeMainTab, subMenu]);
   useEffect(() => {
     window.addEventListener("mousemove", windowMousePostion);
     return () => window.removeEventListener("mousemove", windowMousePostion);
@@ -41,38 +67,9 @@ export default function Header() {
   const windowMousePostion = (e) => {
     setscreenX(e.screenX);
     setscreenY(e.screenY);
-  };
-
-  const linksMousePosition = (e) => {
-    settabX(e.screenX);
-    settabY(e.screenY);
-    //set active main tab to track which tab list is active
-    if (
-      e.target.classList.value.toLowerCase().includes("main-tab") &&
-      (!activeMainTab ||
-        e.target.dataset.tabCollection !== activeMainTab.dataset.tabCollection)
-    ) {
-      setactiveMainTab(e.target.nextSibling);
+    if (screenX !== tabX && screenY !== tabY && activeMainTab) {
+      menuHide();
     }
-    console.log("activeMainTab", activeMainTab);
-    // console.log("currentMenu",currentMenu)
-    if (e.target.classList.value.includes("has-submenu")) {
-      if (activeMenu) {
-        if (!activeMenu.find((item) => item === e.target.nextSibling)) {
-          setactiveMenu((oldArray = Array.from(activeMenu)) => [
-            ...oldArray,
-            e.target.nextSibling,
-          ]);
-          // console.log("hit");
-        }
-      } else {
-        setactiveMenu(e.target.nextSibling);
-      }
-      // console.log(activeMenu);
-    }
-    return tabX === screenX && tabY === screenY && activeMenu
-      ? menuShow()
-      : null;
   };
 
   return (
@@ -86,20 +83,23 @@ export default function Header() {
         </a>
       </h1>
       <nav>
-        <ul className="list-main-tabs">
+        <ul className="list-main-tabs" onMouseLeave={menuHide}>
           {links.tabs.map((tab, i) => {
             //map all main tabs, level 1 subtabs, level 2 subtabs
             return (
               <li
                 className={`main-tab`}
                 data-tab-collection={`tab${i + 1}`}
-                onMouseMove={linksMousePosition}
+                onMouseMove={(e) => {
+                  settabX(e.screenX);
+                  settabY(e.screenY);
+                  menuShow(e);
+                }}
               >
                 <a
                   className={`main-tab-link has-submenu`}
                   data-tab-collection={`tab${i + 1}`}
                   href={tab.mainTab.link}
-                  onMouseLeave={menuHide}
                 >
                   {tab.mainTab.title}
                 </a>
