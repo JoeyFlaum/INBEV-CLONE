@@ -27,7 +27,9 @@
   left: -2.5rem;
 }
 .list-sub-tabs-2 {
-  left: 10rem;
+  left: 9rem;
+  top:0;
+  padding:20px;
 }
 li {
   list-style: none;

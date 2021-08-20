@@ -20,8 +20,6 @@ export default function Header() {
     ) {
       setactiveMainTab(e.target.nextSibling); //sets UL element for drop down
     }
-    const subMenuShow = () => {};
-    const subMenuHide = () => {};
     if (e.target.classList.value.includes("has-submenu")) {
       if (subMenu) {
         if (!subMenu.find((item) => item === e.target.nextSibling)) {
@@ -34,13 +32,38 @@ export default function Header() {
         setsubMenu(e.target.nextSibling);
       }
     }
-    activeMainTab?.classList.add("active");
+      subMenu.forEach(element=>element.classList.add("active"))
   };
   //when leaving menu, menu should be hidden
   const menuHide = () => {
     activeMainTab.classList.remove("active");
   };
-
+  const subMenuHide = (e) =>{
+    const arraySubMenu = [...subMenu];
+      const activeSubMenu = arraySubMenu.filter(
+        (element) =>
+          element !== e.target 
+      );
+      console.dir(e.target)
+    if (e.target.classList.value.toLowerCase().includes("sub-tabs-2")){
+      const activeSubMenu = arraySubMenu.filter(
+        (element) =>
+          element !== e.target 
+      );
+      e.target.classList.remove("active")
+      setsubMenu(activeSubMenu)
+      console.log("hit",e.target.classList.value);
+    }
+    else if(e.target.classList.value.toLowerCase().includes("has-submenu")){
+      const activeSubMenu = arraySubMenu.filter(
+        (element) =>
+          element !== e.target.nextSibling 
+      );
+      console.log("hit sibling")
+      e.target.nextSibling.classList.remove("active")
+      setsubMenu(activeSubMenu)
+    }
+  }
   useEffect(() => {
     //remove active class from dataset that does not match activeMainTab
     //compare activeMainTab to subMenu
@@ -62,6 +85,7 @@ export default function Header() {
     ]);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [activeMainTab]);
+  
 
   useEffect(() => {
     window.addEventListener("mousemove", windowMousePostion);
@@ -75,7 +99,7 @@ export default function Header() {
       menuHide();
     }
   };
-
+// console.log(subMenu)
   return (
     <header>
       <h1>
@@ -97,7 +121,7 @@ export default function Header() {
                 onMouseMove={(e) => {
                   settabX(e.screenX);
                   settabY(e.screenY);
-                  menuShow(e);
+                  menuShow(e);                  
                 }}
               >
                 <a
@@ -112,7 +136,7 @@ export default function Header() {
                   data-tab-collection={`tab${i + 1}`}
                 >
                   {tab.subTabs.map((subTab) => (
-                    <li
+                    <li onMouseLeave = {subMenuHide}
                       className={`sub-tab-1`}
                       data-tab-collection={`tab${i + 1}`}
                     >
@@ -122,7 +146,6 @@ export default function Header() {
                         }`} //if submenu exists, add class
                         data-tab-collection={`tab${i + 1}`}
                         href={subTab.link}
-                        onMouseLeave={menuHide}
                       >
                         {subTab.title}
                       </a>
