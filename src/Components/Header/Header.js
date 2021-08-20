@@ -20,12 +20,13 @@ export default function Header() {
     ) {
       setactiveMainTab(e.target.nextSibling); //sets UL element for drop down
     }
-
+    const subMenuShow = () => {};
+    const subMenuHide = () => {};
     if (e.target.classList.value.includes("has-submenu")) {
       if (subMenu) {
         if (!subMenu.find((item) => item === e.target.nextSibling)) {
           setsubMenu((oldArray = Array.from(subMenu)) => [
-            ...oldArray,
+            ...oldArray /*.filter((element)=>element.dataset.tabCollection === e.target.nextSibling.dataset.tabCollection)*/,
             e.target.nextSibling,
           ]);
         }
@@ -34,14 +35,12 @@ export default function Header() {
       }
     }
     activeMainTab?.classList.add("active");
-
-    // return subMenu.forEach((element) => element.classList.add("active"));
   };
   //when leaving menu, menu should be hidden
   const menuHide = () => {
     activeMainTab.classList.remove("active");
   };
-  console.log(subMenu);
+
   useEffect(() => {
     //remove active class from dataset that does not match activeMainTab
     //compare activeMainTab to subMenu
@@ -49,16 +48,21 @@ export default function Header() {
     if (activeMainTab && subMenu) {
       const arraySubMenu = [...subMenu];
       const inactiveSubMenu = arraySubMenu.filter(
-        (element) => element.dataset.tabCollection !== activeMainTab.dataset.tabCollection
+        (element) =>
+          element.dataset.tabCollection !== activeMainTab.dataset.tabCollection
       );
       inactiveSubMenu.forEach((element) => element.classList.remove("active"));
-      // remove non matches from subMenu
-      // const newSubMenu = arraySubMenu.filter(
-      //   (element) => element.dataset.tabCollection === activeMainTab.dataset.tabCollection
-      // );
-      // setsubMenu(newSubMenu)
     }
-  }, [activeMainTab, subMenu]);
+    //remove menus not in current element dataset("tabCollection")
+    setsubMenu((oldArray = Array.from(subMenu)) => [
+      ...oldArray.filter(
+        (element) =>
+          element.dataset.tabCollection === activeMainTab.dataset.tabCollection
+      ),
+    ]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [activeMainTab]);
+
   useEffect(() => {
     window.addEventListener("mousemove", windowMousePostion);
     return () => window.removeEventListener("mousemove", windowMousePostion);
