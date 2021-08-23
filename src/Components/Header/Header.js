@@ -2,6 +2,8 @@ import { links } from "./Links";
 import "./Header.css";
 import { useEffect, useState } from "react";
 
+//ToDo: Refactor Menu show functionality
+
 export default function Header() {
   const [screenX, setscreenX] = useState();
   const [screenY, setscreenY] = useState();
@@ -9,6 +11,8 @@ export default function Header() {
   const [tabY, settabY] = useState();
   const [activeMainTab, setactiveMainTab] = useState();
   const [subMenu, setsubMenu] = useState([]);
+  const [scrollY, setscrollY] = useState(0);
+  const [scrollDirection, setscrollDirection] = useState("up");
 
   //when window/menu x and y match, menu should be visible
   const menuShow = (e) => {
@@ -32,38 +36,31 @@ export default function Header() {
         setsubMenu(e.target.nextSibling);
       }
     }
-      subMenu.forEach(element=>element.classList.add("active"))
+    subMenu.forEach((element) => element.classList.add("active"));
   };
   //when leaving menu, menu should be hidden
   const menuHide = () => {
     activeMainTab.classList.remove("active");
   };
-  const subMenuHide = (e) =>{
+  const subMenuHide = (e) => {
     const arraySubMenu = [...subMenu];
+    const activeSubMenu = arraySubMenu.filter(
+      (element) => element !== e.target
+    );
+    if (e.target.classList.value.toLowerCase().includes("sub-tabs-2")) {
       const activeSubMenu = arraySubMenu.filter(
-        (element) =>
-          element !== e.target 
+        (element) => element !== e.target
       );
-      console.dir(e.target)
-    if (e.target.classList.value.toLowerCase().includes("sub-tabs-2")){
+      e.target.classList.remove("active");
+      setsubMenu(activeSubMenu);
+    } else if (e.target.classList.value.toLowerCase().includes("has-submenu")) {
       const activeSubMenu = arraySubMenu.filter(
-        (element) =>
-          element !== e.target 
+        (element) => element !== e.target.nextSibling
       );
-      e.target.classList.remove("active")
-      setsubMenu(activeSubMenu)
-      console.log("hit",e.target.classList.value);
+      e.target.nextSibling.classList.remove("active");
+      setsubMenu(activeSubMenu);
     }
-    else if(e.target.classList.value.toLowerCase().includes("has-submenu")){
-      const activeSubMenu = arraySubMenu.filter(
-        (element) =>
-          element !== e.target.nextSibling 
-      );
-      console.log("hit sibling")
-      e.target.nextSibling.classList.remove("active")
-      setsubMenu(activeSubMenu)
-    }
-  }
+  };
   useEffect(() => {
     //remove active class from dataset that does not match activeMainTab
     //compare activeMainTab to subMenu
@@ -84,14 +81,26 @@ export default function Header() {
       ),
     ]);
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [activeMainTab]);
-  
+  }, [activeMainTab]); //including subMenu in dependencies creates infinite loop
 
   useEffect(() => {
     window.addEventListener("mousemove", windowMousePostion);
-    return () => window.removeEventListener("mousemove", windowMousePostion);
+    window.addEventListener("scroll", scrollPath);
+    return () => {
+      window.removeEventListener("mousemove", windowMousePostion);
+      window.removeEventListener("scroll", scrollPath);
+    };
   });
 
+  const scrollPath=(e)=>{
+   const windowPathIndex = e.path.map((object,i)=>{
+      if(Object.keys(object).find(path=>path ==="window")==="window"){return i}
+      else{return null}
+    }).join("")
+    setscrollY(e.path[windowPathIndex].scrollY);
+    e.path[windowPathIndex].scrollY<scrollY?setscrollDirection("up"):setscrollDirection("down")
+    console.log(scrollY,scrollDirection)
+  }
   const windowMousePostion = (e) => {
     setscreenX(e.screenX);
     setscreenY(e.screenY);
@@ -99,7 +108,6 @@ export default function Header() {
       menuHide();
     }
   };
-// console.log(subMenu)
   return (
     <header>
       <h1>
@@ -121,8 +129,13 @@ export default function Header() {
                 onMouseMove={(e) => {
                   settabX(e.screenX);
                   settabY(e.screenY);
-                  menuShow(e);                  
+                  menuShow(e);
                 }}
+                onClick={() =>
+                  subMenu.forEach((element) =>
+                    element.classList.remove("active")
+                  )
+                }
               >
                 <a
                   className={`main-tab-link has-submenu`}
@@ -136,7 +149,8 @@ export default function Header() {
                   data-tab-collection={`tab${i + 1}`}
                 >
                   {tab.subTabs.map((subTab) => (
-                    <li onMouseLeave = {subMenuHide}
+                    <li
+                      onMouseLeave={subMenuHide}
                       className={`sub-tab-1`}
                       data-tab-collection={`tab${i + 1}`}
                     >

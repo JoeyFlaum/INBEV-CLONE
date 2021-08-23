@@ -2,6 +2,6 @@
 
 export default function Hero(){
     return(
-        <div>Hero</div>
+        <div className = "hero-container" style={{height:"1000px;"}}>Hero</div>
     )
 }

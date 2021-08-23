@@ -1,4 +1,4 @@
-export const links = {//ToDo: move links to file to clean up Header component, render links to header
+export const links = {
     tabs: [
       {
         mainTab: { title: "WHO WE ARE", link: "#" },

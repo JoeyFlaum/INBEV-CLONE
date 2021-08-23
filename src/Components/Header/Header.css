@@ -1,3 +1,7 @@
+header{
+  height:10%;
+  width:100vw;
+}
 .list-main-tabs {
   /*main header tabs */
   display: flex;

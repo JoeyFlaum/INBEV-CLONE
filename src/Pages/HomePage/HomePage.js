@@ -10,7 +10,7 @@ export default function HomePage(){
     return(
         <>
         <Header/>
-        <Hero/>
+        <Hero style={{height:"1000px;"}}/>
         <Mission/>
         <Stories/>
         <div>grey divider</div>
