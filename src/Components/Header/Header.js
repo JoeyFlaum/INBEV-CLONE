@@ -42,7 +42,7 @@ export default function Header() {
   };
   //when leaving menu, menu should be hidden
   const menuHide = () => {
-    activeMainTab.classList.remove("active");
+    activeMainTab?.classList.remove("active");
   };
   const subMenuHide = (e) => {
     const arraySubMenu = [...subMenu];
@@ -122,7 +122,7 @@ export default function Header() {
   };
   return (
     <header className={scrollDirection === "up" ? "fixed" : "absolute"}>
-      <h1 className = 'logo'>
+      <h1 className="logo">
         <a href="/" rel="home">
           <img
             src="https://www.ab-inbev.com/etc.clientlibs/abinbev/clientlibs/clientlib-site/resources/brand-assets/abinbev_logo_en.svg"
@@ -204,11 +204,14 @@ export default function Header() {
           })}
         </ul>
       </nav>
-      <div className = "utilities">
-      <Globe />
-      <Search />
-    </div>      
-    
+      <div className="utilities-container">
+        <div className="utilities-globe">
+          <Globe />
+        </div>
+        <div className="utilities-search">
+          <Search />
+        </div>
+      </div>
     </header>
   );
 }

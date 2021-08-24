@@ -60,6 +60,9 @@ header.absolute{
   width:max-content;
   padding:.75rem;
 }
+nav{
+  flex-grow:10;
+}
 .list-sub-tabs-1,
 .list-sub-tabs-2 {
   display: flex;
@@ -92,11 +95,16 @@ header a {
 .list-sub-tabs-2.active {
   background: blue;
 }
-nav{
-  flex-grow:10;
-}
-.utilities{
+
+.utilities-container{
   display:flex;
   flex-grow:1;
+  justify-content: center;
 }
+.utilities-globe,.utilities-search{ height:1rem;width:auto;margin:.55rem;cursor:pointer;}
+.utilities-container svg{
+  height: 1.1rem;
+}
+
+
 
