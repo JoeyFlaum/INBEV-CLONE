@@ -1,20 +1,64 @@
+#root{
+  --pure-white:#fff;
+  --orange-text:#f49c00;
+  --ab-red:rgb(180, 38, 2);
+  --dim:rgb(0,0,0,0.5);
+  --txt-shdw:2px 2px black;
+  --txt-black:#231f20;
+}
+body{
+  scroll-behavior: smooth;
+}
 header{
-  height:10%;
+  height:4.85rem;
   width:100vw;
+  background:lightcyan;
+  display:flex;
+  align-items: center;
+  position: fixed;
+  top:0;
+}
+header *{color:var(--txt-black);  }
+/*TODO delete hero-container after header layout complete*/
+.hero-container{
+  height:1000px;
+}
+header.fixed{
+  position: fixed;
+}
+header.absolute{
+  position:absolute;
+}
+.logo {
+  display:flex;
+  flex-grow:1;
+  margin: 1.9rem;
+  margin-left:1.95rem;
+}
+.logo img{
+  height: 1.05rem;
+}
+.logo a{
+  display: flex;
+  align-items: center;
 }
 .list-main-tabs {
   /*main header tabs */
   display: flex;
-  font-weight: 500;
+  justify-content: center;
+  font-weight: 700;
+  padding:unset;
 }
 .main-tab,
 .sub-tab-1 {
   position: relative;
 }
-.list-main-tabs a{
+.main-tab-link{/*fills entire element with link*/
   display:flex;
   flex-grow: 1;
-  height: 100%;
+  height: auto;
+  width:max-content;
+  padding:.75rem;
 }
 .list-sub-tabs-1,
 .list-sub-tabs-2 {
@@ -33,16 +77,14 @@ header{
 .list-sub-tabs-2 {
   left: 9rem;
   top:0;
-  padding:20px;
 }
-li {
+header li {
+  font-size: .7rem;
   list-style: none;
   cursor: pointer;
-  width: 100%;
 }
-a {
+header a {
   text-decoration: none;
-  color: grey;
 }
 .list-sub-tabs-1.active {
   background: lightblue;
@@ -50,3 +92,11 @@ a {
 .list-sub-tabs-2.active {
   background: blue;
 }
+nav{
+  flex-grow:10;
+}
+.utilities{
+  display:flex;
+  flex-grow:1;
+}
+

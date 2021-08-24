@@ -1,6 +1,8 @@
 import { links } from "./Links";
 import "./Header.css";
 import { useEffect, useState } from "react";
+import Search from "../DesignElements/Search";
+import Globe from "../DesignElements/Globe";
 
 //ToDo: Refactor Menu show functionality
 
@@ -72,14 +74,15 @@ export default function Header() {
           element.dataset.tabCollection !== activeMainTab.dataset.tabCollection
       );
       inactiveSubMenu.forEach((element) => element.classList.remove("active"));
+      //remove menus not in current element dataset("tabCollection")
+      setsubMenu((oldArray = Array.from(subMenu)) => [
+        ...oldArray.filter(
+          (element) =>
+            element.dataset.tabCollection ===
+            activeMainTab.dataset.tabCollection
+        ),
+      ]);
     }
-    //remove menus not in current element dataset("tabCollection")
-    setsubMenu((oldArray = Array.from(subMenu)) => [
-      ...oldArray.filter(
-        (element) =>
-          element.dataset.tabCollection === activeMainTab.dataset.tabCollection
-      ),
-    ]);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [activeMainTab]); //including subMenu in dependencies creates infinite loop
 
@@ -92,15 +95,24 @@ export default function Header() {
     };
   });
 
-  const scrollPath=(e)=>{
-   const windowPathIndex = e.path.map((object,i)=>{
-      if(Object.keys(object).find(path=>path ==="window")==="window"){return i}
-      else{return null}
-    }).join("")
+  const scrollPath = (e) => {
+    const windowPathIndex = e.path
+      .map((object, i) => {
+        if (
+          Object.keys(object).find((path) => path === "window") === "window"
+        ) {
+          return i;
+        } else {
+          return null;
+        }
+      })
+      .join("");
     setscrollY(e.path[windowPathIndex].scrollY);
-    e.path[windowPathIndex].scrollY<scrollY?setscrollDirection("up"):setscrollDirection("down")
-    console.log(scrollY,scrollDirection)
-  }
+    e.path[windowPathIndex].scrollY < scrollY
+      ? setscrollDirection("up")
+      : setscrollDirection("down");
+    console.log(scrollY, scrollDirection);
+  };
   const windowMousePostion = (e) => {
     setscreenX(e.screenX);
     setscreenY(e.screenY);
@@ -109,8 +121,8 @@ export default function Header() {
     }
   };
   return (
-    <header>
-      <h1>
+    <header className={scrollDirection === "up" ? "fixed" : "absolute"}>
+      <h1 className = 'logo'>
         <a href="/" rel="home">
           <img
             src="https://www.ab-inbev.com/etc.clientlibs/abinbev/clientlibs/clientlib-site/resources/brand-assets/abinbev_logo_en.svg"
@@ -192,6 +204,11 @@ export default function Header() {
           })}
         </ul>
       </nav>
+      <div className = "utilities">
+      <Globe />
+      <Search />
+    </div>      
+    
     </header>
   );
 }

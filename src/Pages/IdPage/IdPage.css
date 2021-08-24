@@ -1,11 +1,4 @@
-#root{
-    --pure-white:#fff;
-    --orange-text:#f49c00;
-    --ab-red:rgb(180, 38, 2);
-    --dim:rgb(0,0,0,0.5);
-    --txt-shdw:2px 2px black;
-    
-}
+
 #id-page{
     font-family: canada-type-gibson, sans-serif;
     position: relative;
