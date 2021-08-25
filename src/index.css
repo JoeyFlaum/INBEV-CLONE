@@ -5,6 +5,7 @@
   --dim:rgb(0,0,0,0.5);
   --txt-shdw:2px 2px black;
   --txt-black:#231f20;
+  overflow-x: hidden;
 }
 body {
   margin:0;
