@@ -157,7 +157,7 @@ export default function Header() {
                   {tab.mainTab.title}
                 </a>
                 <ul
-                  className={`list-sub-tabs-1`}
+                  className={`list sub-tabs-1`}
                   data-tab-collection={`tab${i + 1}`}
                 >
                   {tab.subTabs.map((subTab) => (
@@ -177,7 +177,7 @@ export default function Header() {
                       </a>
                       {subTab.subTabs ? (
                         <ul
-                          className={`list-sub-tabs-2 `}
+                          className={`list sub-tabs-2 `}
                           data-tab-collection={`tab${i + 1}`}
                         >
                           {subTab.subTabs.map((subTab) => (
