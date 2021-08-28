@@ -16,9 +16,9 @@ export default function Search() {
       <g
         id="NAV_Desktop"
         stroke="none"
-        stroke-width="1"
+        strokeWidth="1"
         fill="none"
-        fill-rule="evenodd"
+        fillRule="evenodd"
       >
         <g
           id="Nav_Desktop_Home"
@@ -29,8 +29,8 @@ export default function Search() {
             <path
               d="M19.9998693,20 L15.5339317,15.5340624"
               id="Stroke-3"
-              stroke-linecap="round"
-              stroke-linejoin="round"
+              strokeLinecap="round"
+              strokeLinejoin="round"
             ></path>
             <path
               d="M8.9472377,0.5 C4.28204674,0.5 0.499869281,4.28217746 0.499869281,8.94736842 C0.499869281,13.61333 4.28162438,17.3947368 8.9472377,17.3947368 C13.612851,17.3947368 17.3946061,13.61333 17.3946061,8.94736842 C17.3946061,4.28217746 13.6124287,0.5 8.9472377,0.5 Z"

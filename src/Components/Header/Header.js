@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import Search from "../DesignElements/Search";
 import Globe from "../DesignElements/Globe";
 
-//ToDo: Refactor Menu show functionality
+//ToDo: Refactor Menu show functionality | Move window position useEffect to lower level component(Idea is to stop rerendering entire header every time the window event triggers)
 
 export default function Header() {
   const [screenX, setscreenX] = useState();
@@ -46,9 +46,6 @@ export default function Header() {
   };
   const subMenuHide = (e) => {
     const arraySubMenu = [...subMenu];
-    const activeSubMenu = arraySubMenu.filter(
-      (element) => element !== e.target
-    );
     if (e.target.classList.value.toLowerCase().includes("sub-tabs-2")) {
       const activeSubMenu = arraySubMenu.filter(
         (element) => element !== e.target
@@ -96,22 +93,11 @@ export default function Header() {
   });
 
   const scrollPath = (e) => {
-    const windowPathIndex = e.path
-      .map((object, i) => {
-        if (
-          Object.keys(object).find((path) => path === "window") === "window"
-        ) {
-          return i;
-        } else {
-          return null;
-        }
-      })
-      .join("");
-    setscrollY(e.path[windowPathIndex].scrollY);
-    e.path[windowPathIndex].scrollY < scrollY
+      window.scrollY < scrollY
       ? setscrollDirection("up")
       : setscrollDirection("down");
-    console.log(scrollY, scrollDirection);
+      console.log(window.scrollY,scrollY,scrollDirection)
+      setscrollY(window.scrollY);
   };
   const windowMousePostion = (e) => {
     setscreenX(e.screenX);
@@ -136,6 +122,7 @@ export default function Header() {
             //map all main tabs, level 1 subtabs, level 2 subtabs
             return (
               <li
+                key = {`${tab.title}li${i}`}
                 className={`main-tab`}
                 data-tab-collection={`tab${i + 1}`}
                 onMouseMove={(e) => {
@@ -150,6 +137,7 @@ export default function Header() {
                 }
               >
                 <a
+                   key = {`${tab.title}a${i+10}`}
                   className={`main-tab-link has-submenu`}
                   data-tab-collection={`tab${i + 1}`}
                   href={tab.mainTab.link}
@@ -157,19 +145,22 @@ export default function Header() {
                   {tab.mainTab.title}
                 </a>
                 <ul
+                   key = {`${tab.title}ul${i+1000}`}
                   className={`list sub-tabs-1`}
                   data-tab-collection={`tab${i + 1}`}
                 >
                   {tab.subTabs.map((subTab) => (
                     <li
+                      key = {`${subTab.title}li${i+10000}`}
                       onMouseLeave={subMenuHide}
                       className={`sub-tab-1`}
                       data-tab-collection={`tab${i + 1}`}
                     >
                       <a
+                         key = {`${subTab.title}a${i+20000}`}
                         className={`sub-tab-1 link ${
                           subTab.subTabs ? "has-submenu" : ""
-                        }`} //if submenu exists, add class
+                        }`}  //if submenu exists, add class
                         data-tab-collection={`tab${i + 1}`}
                         href={subTab.link}
                       >
@@ -177,15 +168,18 @@ export default function Header() {
                       </a>
                       {subTab.subTabs ? (
                         <ul
+                           key = {`${subTab.title}ul${i+30000}`}
                           className={`list sub-tabs-2 `}
                           data-tab-collection={`tab${i + 1}`}
                         >
                           {subTab.subTabs.map((subTab) => (
                             <li
+                              key = {`${subTab.title}li${i+40000}`}
                               className={`sub-tab-2 tab${i + 1}`}
                               data-tab-collection={`tab${i + 1}`}
                             >
                               <a
+                                key = {`${subTab.title}a${i+50000}`}
                                 className={`sub-tab-2 link tab${i + 1}`}
                                 href={subTab.link}
                                 data-tab-collection={`tab${i + 1}`}

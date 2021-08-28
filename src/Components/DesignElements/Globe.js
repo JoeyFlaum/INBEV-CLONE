@@ -15,11 +15,11 @@ export default function Globe() {
       <g
         id="NAV_Desktop"
         stroke="none"
-        stroke-width="1"
+        strokeWidth="1"
         fill="none"
-        fill-rule="evenodd"
-        stroke-linecap="round"
-        stroke-linejoin="round"
+        fillRule="evenodd"
+        strokeLinecap="round"
+        strokeLinejoin="round"
       >
         <g
           id="Nav_Desktop_Home"
