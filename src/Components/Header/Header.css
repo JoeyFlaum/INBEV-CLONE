@@ -7,6 +7,7 @@
   --txt-black: #231f20;
   --bx-shdw:rgb(100 100 100 / 28%) 0 6px 17px 1px;
   --bx-shdw-list:rgb(100 100 100 / 28%) 0 13px 17px 1px;
+  --dark-grey:rgb(95, 95, 95);
 }
 body {
   scroll-behavior: smooth;
@@ -98,6 +99,10 @@ nav {
   line-height:1rem;
   align-items: center;
 }
+.sub-tab-1.active,.sub-tab-2 a{
+  background:var(--txt-black);
+  color:var(--pure-white)
+}
 .main-tab-link:hover,.sub-tab-1:hover,
 .sub-tab-2:hover{
   color:var(--orange-text)
@@ -123,12 +128,7 @@ nav {
   left: 240px;
   top: 0;
 }
-.sub-tabs-1 .has-submenu:hover,.sub-tab-2 a{
-  background:var(--txt-black);
-}
-.sub-tab-2 a{
-  color:var(--pure-white)
-}
+
 header li {
   font-size: 0.75rem;
   list-style: none;
@@ -143,6 +143,31 @@ header a {
 }
 .list.sub-tabs-2.active{
  box-shadow:unset;
+}
+.sub-tab-1.has-submenu:before{
+  content:"";
+  width:8px;
+  background:var(--txt-black);
+  height: 1px;
+  z-index: 10;
+  position: absolute;
+  bottom:55%;
+  right:.75rem;
+  transform:rotate(40deg);
+}
+.sub-tab-1.has-submenu:after{
+  content:"";
+  width:8px;
+  background:var(--txt-black);
+  height: 1px;
+  z-index: 10;
+  position: absolute;
+  top:55%;
+  right:.75rem;
+  transform:rotate(-40deg);
+}
+.sub-tab-1.has-submenu:before,.sub-tab-1.has-submenu:after{
+  background-color: var(--dark-grey);
 }
 
 .utilities-container {

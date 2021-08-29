@@ -29,9 +29,11 @@ export default function Header() {
     if (e.target.classList.value.includes("has-submenu")) {
       if (subMenu) {
         if (!subMenu.find((item) => item === e.target.nextSibling)) {//finds the next sibling to the <a> tag which would be <ul>
+          
           setsubMenu((oldArray = Array.from(subMenu)) => [
             ...oldArray,
-            e.target.nextSibling,
+            e.target.nextSibling/* <ul>*/,
+            e.target//<a> 
           ]);
         }
       } else {
@@ -60,7 +62,8 @@ export default function Header() {
         (element) => element !== e.target.nextSibling
       );
       e.target.nextSibling.classList.remove("active");
-      return setsubMenu(activeSubMenu);
+      e.target.classList.remove("active")
+      return setsubMenu(activeSubMenu.filter(element=>element!==e.target));
     }
   };
   useEffect(() => {
@@ -154,7 +157,7 @@ export default function Header() {
                   {tab.subTabs.map((subTab) => (
                     <li
                       key={`${subTab.title}li${i + 10000}`}
-                      className={`sub-tab-1`}
+                      className={`sub-tab-1`} 
                       data-tab-collection={`tab${i + 1}`}
                       onMouseLeave={subMenuHide}
                     >
