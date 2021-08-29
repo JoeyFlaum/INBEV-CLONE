@@ -17,7 +17,7 @@ export default function Header() {
   const [scrollDirection, setscrollDirection] = useState("up");
 
   //when window/menu x and y match, menu should be visible
-  const menuShow = (e) => {
+  const menuShow = (e) => {////////////>>>>>>>>> ACCEPTABLE <<<<<<<<<<<< ////////////////
     if (
       //set active main tab to track which tab list is active using dataset
       e.target.classList.value.toLowerCase().includes("main-tab") && //only store "main-tab" in activeMainTab
@@ -28,36 +28,39 @@ export default function Header() {
     }
     if (e.target.classList.value.includes("has-submenu")) {
       if (subMenu) {
-        if (!subMenu.find((item) => item === e.target.nextSibling)) {
+        if (!subMenu.find((item) => item === e.target.nextSibling)) {//finds the next sibling to the <a> tag which would be <ul>
           setsubMenu((oldArray = Array.from(subMenu)) => [
-            ...oldArray /*.filter((element)=>element.dataset.tabCollection === e.target.nextSibling.dataset.tabCollection)*/,
+            ...oldArray,
             e.target.nextSibling,
           ]);
         }
       } else {
-        setsubMenu(e.target.nextSibling);
+        setsubMenu(e.target.nextSibling);//sets first array item
       }
     }
-    subMenu.forEach((element) => element.classList.add("active"));
+  return subMenu.forEach((element) => element.classList.add("active"));//sets all sub menus in array to active to show menus
   };
-  //when leaving menu, menu should be hidden
-  const menuHide = () => {
+
+  //when leaving menu, menu and sub menus should be hidden
+  const menuHide = () => { ////////////>>>>>>>>> ACCEPTABLE <<<<<<<<<<<< ////////////////
     activeMainTab?.classList.remove("active");
+    subMenu.forEach((element) => element.classList.remove("active"));
+    setsubMenu([])
   };
-  const subMenuHide = (e) => {
-    const arraySubMenu = [...subMenu];
-    if (e.target.classList.value.toLowerCase().includes("sub-tabs-2")) {
-      const activeSubMenu = arraySubMenu.filter(
-        (element) => element !== e.target
-      );
-      e.target.classList.remove("active");
-      setsubMenu(activeSubMenu);
-    } else if (e.target.classList.value.toLowerCase().includes("has-submenu")) {
-      const activeSubMenu = arraySubMenu.filter(
+  const subMenuHide = (e) => {  
+    if (e.target.classList.value.toLowerCase().includes("sub-tab-2")) {////////////>>>>>>>>> ACCEPTABLE <<<<<<<<<<<< ////////////////
+      const uListElement= e.target.parentNode.parentNode
+      const activeSubMenu = [...subMenu].filter((element) => {
+        return element !== uListElement;//removing <ul> from submenu
+      });
+      uListElement.classList.remove("active");
+      return setsubMenu(activeSubMenu);
+    } else if (e.target.classList.value.toLowerCase().includes("has-submenu")) {////////////>>>>>>>>> ACCEPTABLE <<<<<<<<<<<< ////////////////
+      const activeSubMenu = [...subMenu].filter(//filtering out <ul> with <a class = "has-submenu"> as sibling that is in <li> 
         (element) => element !== e.target.nextSibling
       );
       e.target.nextSibling.classList.remove("active");
-      setsubMenu(activeSubMenu);
+      return setsubMenu(activeSubMenu);
     }
   };
   useEffect(() => {
@@ -83,7 +86,7 @@ export default function Header() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [activeMainTab]); //including subMenu in dependencies creates infinite loop
 
-  useEffect(() => {
+  useEffect(() => {////////////>>>>>>>>> ACCEPTABLE <<<<<<<<<<<< ////////////////
     window.addEventListener("mousemove", windowMousePostion);
     window.addEventListener("scroll", scrollPath);
     return () => {
@@ -92,14 +95,13 @@ export default function Header() {
     };
   });
 
-  const scrollPath = (e) => {
-      window.scrollY < scrollY
+  const scrollPath = (e) => {////////////>>>>>>>>> ACCEPTABLE <<<<<<<<<<<< ////////////////
+    window.scrollY < scrollY
       ? setscrollDirection("up")
       : setscrollDirection("down");
-      console.log(window.scrollY,scrollY,scrollDirection)
-      setscrollY(window.scrollY);
+    setscrollY(window.scrollY);
   };
-  const windowMousePostion = (e) => {
+  const windowMousePostion = (e) => {////////////>>>>>>>>> ACCEPTABLE <<<<<<<<<<<< ////////////////
     setscreenX(e.screenX);
     setscreenY(e.screenY);
     if (screenX !== tabX && screenY !== tabY && activeMainTab) {
@@ -122,7 +124,7 @@ export default function Header() {
             //map all main tabs, level 1 subtabs, level 2 subtabs
             return (
               <li
-                key = {`${tab.title}li${i}`}
+                key={`${tab.title}li${i}`}
                 className={`main-tab`}
                 data-tab-collection={`tab${i + 1}`}
                 onMouseMove={(e) => {
@@ -137,7 +139,7 @@ export default function Header() {
                 }
               >
                 <a
-                   key = {`${tab.title}a${i+10}`}
+                  key={`${tab.title}a${i + 10}`}
                   className={`main-tab-link has-submenu`}
                   data-tab-collection={`tab${i + 1}`}
                   href={tab.mainTab.link}
@@ -145,22 +147,22 @@ export default function Header() {
                   {tab.mainTab.title}
                 </a>
                 <ul
-                   key = {`${tab.title}ul${i+1000}`}
+                  key={`${tab.title}ul${i + 1000}`}
                   className={`list sub-tabs-1`}
                   data-tab-collection={`tab${i + 1}`}
                 >
                   {tab.subTabs.map((subTab) => (
                     <li
-                      key = {`${subTab.title}li${i+10000}`}
-                      onMouseLeave={subMenuHide}
+                      key={`${subTab.title}li${i + 10000}`}
                       className={`sub-tab-1`}
                       data-tab-collection={`tab${i + 1}`}
+                      onMouseLeave={subMenuHide}
                     >
                       <a
-                         key = {`${subTab.title}a${i+20000}`}
+                        key={`${subTab.title}a${i + 20000}`}
                         className={`sub-tab-1 link ${
                           subTab.subTabs ? "has-submenu" : ""
-                        }`}  //if submenu exists, add class
+                        }`} //if submenu exists, add class
                         data-tab-collection={`tab${i + 1}`}
                         href={subTab.link}
                       >
@@ -168,18 +170,18 @@ export default function Header() {
                       </a>
                       {subTab.subTabs ? (
                         <ul
-                           key = {`${subTab.title}ul${i+30000}`}
-                          className={`list sub-tabs-2 `}
+                          key={`${subTab.title}ul${i + 30000}`}
+                          className={`list sub-tabs-2`}
                           data-tab-collection={`tab${i + 1}`}
                         >
                           {subTab.subTabs.map((subTab) => (
                             <li
-                              key = {`${subTab.title}li${i+40000}`}
+                              key={`${subTab.title}li${i + 40000}`}
                               className={`sub-tab-2 tab${i + 1}`}
                               data-tab-collection={`tab${i + 1}`}
                             >
                               <a
-                                key = {`${subTab.title}a${i+50000}`}
+                                key={`${subTab.title}a${i + 50000}`}
                                 className={`sub-tab-2 link tab${i + 1}`}
                                 href={subTab.link}
                                 data-tab-collection={`tab${i + 1}`}
