@@ -9,9 +9,6 @@
   --bx-shdw-list:rgb(100 100 100 / 28%) 0 13px 17px 1px;
   --dark-grey:rgb(95, 95, 95);
 }
-body {
-  scroll-behavior: smooth;
-}
 header {
   height: 5.5rem;
   width: 100vw;
@@ -20,13 +17,10 @@ header {
   align-items: center;
   position: fixed;
   top: 0;
+  z-index: 100;
 }
 header * {
   color: var(--txt-black);
-}
-/*TODO delete hero-container after header layout complete*/
-.hero-container {
-  height: 1000px;
 }
 header.fixed {
   position: fixed;

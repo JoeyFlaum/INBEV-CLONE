@@ -1,7 +1,7 @@
 export default function ColorStrip({ additionalClassName }) {
   return (
     <div
-      className={`color-strip ${additionalClassName}`}
+      className={`color-strip ${additionalClassName?additionalClassName:""}`}
       style={{
         height: "4px",
         width: "100vw",

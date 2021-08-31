@@ -9,8 +9,10 @@
     justify-content: center;
 }
 
-.background-image{
+.background-image.id-page{
     background-image: url('https://www.ab-inbev.com/content/dam/abinbev/our-brands/our-beer/desktop/Marquee.png');
+}
+.background-image{
     background-repeat: no-repeat;
     position: fixed;
     top: 0;

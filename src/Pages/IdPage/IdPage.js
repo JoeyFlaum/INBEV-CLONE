@@ -36,7 +36,7 @@ export default function IdPage({ isLegalAge, formSubmitted,loginAttempts,setlogi
   const [legalAge, setLegalAge] = useState("");
   return (
     <main id="id-page">
-      <div className="background-image"></div>
+      <div className="background-image id-page"></div>
       <div className="id-wrapper">
         {formSubmitted === undefined || formSubmitted ? (// formSubmitted is undefined by default, true if old enough to enter, false if underage
           <>
