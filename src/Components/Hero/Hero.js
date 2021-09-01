@@ -7,7 +7,7 @@ export default function Hero() {
   return (
     <section className="hero-container">
       <div className="hero--background">
-        <div className="hero--image-container">
+        <div className="hero--background-image-container">
           <img
             className="hero--background-image"
             src="https://www.ab-inbev.com/content/dam/universaltemplate/abinbev/home/UNGA2020_1440x472.jpg"
@@ -16,6 +16,7 @@ export default function Hero() {
           <div className="hero--background-image overlay"></div>
         </div>
       </div>
+      <div className = "hero__content-wrapper">
       <h2 className="hero--paragraph">
         <a
           className="hero--hashtag"
@@ -30,7 +31,7 @@ export default function Hero() {
           the world
         </p>
         <a
-          className="hero--hashtag"
+          className="hero--secondary-link"
           target="_blank"
           rel="noreferrer"
           href="https://www.ab-inbev.com/news-media/news-stories/how-the-beer-industry-is-driving-economic-recovery.html"
@@ -39,7 +40,7 @@ export default function Hero() {
           boosting the economy and enabling a sustainable recovery
         </a>
       </h2>
-      <aside className="hero-side-wrapper">
+      <aside className="hero-aside-wrapper">
         <div className="twitter-box">
           <a
             className="@abinbev"
@@ -60,6 +61,7 @@ export default function Hero() {
           <Headlines/>
         </div>
       </aside>
+      </div>
     </section>
   );
 }
