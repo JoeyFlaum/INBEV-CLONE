@@ -4,19 +4,20 @@
     width:100vw;
     position: relative;
 }
+.hero--image-container{
+    height: 100%;
+    position: relative;
+    width:auto;
+    z-index: -1; 
+  }
 .hero--background{
     position: absolute;
     top:0;
     bottom:0;
     right:0;
     left:0;
+    z-index: -1;
 }
-.hero--image-container{
-    height: 100%;
-    position: relative;
-    width:auto;
-    
-  }
 
 
 .hero--background-image{
@@ -27,5 +28,14 @@
     height: 100%;
     object-fit: cover;
     font-family: 'object-fit: cover;';
-
+    z-index: -1;
+}
+.hero--background-image.overlay{
+    position:absolute;
+    background-color: rgba(0,0,0,.4);
+    top:0;
+    bottom:0;
+    right:0;
+    left:0;
+    z-index: -1;
 }

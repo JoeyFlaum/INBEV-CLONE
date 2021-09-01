@@ -19,16 +19,16 @@ export default function TwitterBird() {
           y2="50%"
           id="linearGradient-1"
         >
-          <stop stop-color="#892000" offset="0%"></stop>
-          <stop stop-color="#C43300" offset="30%"></stop>
-          <stop stop-color="#DB580B" offset="70%"></stop>
-          <stop stop-color="#F49C00" offset="100%"></stop>
+          <stop stopColor="#892000" offset="0%"></stop>
+          <stop stopColor="#C43300" offset="30%"></stop>
+          <stop stopColor="#DB580B" offset="70%"></stop>
+          <stop stopColor="#F49C00" offset="100%"></stop>
         </linearGradient>
       </defs>
       <g
         id="DESKTOP"
         stroke="none"
-        stroke-width="1"
+        strokeWidth="1"
         fill="none"
         fillRule="evenodd"
       >
