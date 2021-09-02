@@ -36,6 +36,8 @@ export default function Hero() {
           rel="noreferrer"
           href="https://www.ab-inbev.com/news-media/news-stories/how-the-beer-industry-is-driving-economic-recovery.html"
         >
+        <div className = "secondary-link__arrow arrow-one"></div>
+        <div className = "secondary-link__arrow arrow-two"></div>
           Click to learn how a strong beer value chain plays a critical role in
           boosting the economy and enabling a sustainable recovery
         </a>
@@ -43,7 +45,7 @@ export default function Hero() {
       <aside className="hero-aside-wrapper">
         <div className="twitter-box">
           <a
-            className="@abinbev"
+            className="at-abinbev"
             target="_blank"
             rel="noreferrer"
             href="https://twitter.com/abinbev"
