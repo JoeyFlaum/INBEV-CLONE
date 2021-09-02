@@ -17,7 +17,7 @@ export default function Hero() {
         </div>
       </div>
       <div className = "hero__content-wrapper">
-      <h2 className="hero--paragraph">
+      <h2 className="hero--paragraph-wrapper">
         <a
           className="hero--hashtag"
           target="_blank"

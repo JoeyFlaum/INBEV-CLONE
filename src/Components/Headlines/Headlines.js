@@ -19,7 +19,7 @@ export default function Headlines() {
         href:'#',
       },
       {
-        title: "PRESS RELEASE",
+        title: "ANNUAL REPORT",
         image:
           "	https://www.ab-inbev.com/content/dam/universaltemplate/ab-inbev/News/Stories/2020-annual-report/AR2020_96x96.jpg",
         snippet: "2020 Annual Report",
@@ -29,7 +29,7 @@ export default function Headlines() {
   ];
   return (
     <div className="headlines__container">
-      <h3>Latest Headlines</h3>
+      <h3 className = "headlines__header">Latest Headlines</h3>
       <NewsCard content = {content} />
     </div>
   );

@@ -34,6 +34,7 @@ root {
   color: var(--orange-text);
   font-size: 1.1rem;
   font-weight: 500;
+  margin:0 0 1rem 0;
 }
 .hero--background-image {
   position: absolute;
@@ -65,14 +66,15 @@ root {
   text-decoration: none;
   text-shadow: unset;
 }    
-.hero--paragraph {
+.hero--paragraph-wrapper {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  padding: 4rem calc(12.5%);
   box-sizing: content-box;
+  flex:2;
+  padding:4rem 12.5%
 }
-.hero--paragraph p {
+.hero--paragraph-wrapper p {
   font-size: 3.5rem;
   line-height: 4rem;
   color: var(--pure-white);
@@ -82,14 +84,17 @@ root {
 .hero-aside-wrapper {
   display: flex;
   flex-direction: column;
-  min-width:464px;
-  margin:2rem
+  flex: 1.25;
+  margin:2rem;
+  min-width:400px;
 }
 .hero--secondary-link {
   padding-left: 1rem;
   font-size: 0.8rem;
   color: var(--pure-white);
   position: relative;
+  margin: 1rem 0 0 0;
+  line-height: 1.5;
 }
 .secondary-link__arrow {
   position: absolute;
@@ -121,7 +126,8 @@ root {
 }
 .twitter-box {
     background-color: var(--pure-white);
-    padding: 2rem;
+    padding: 1rem;
+    margin-bottom:2rem;
 }
 .at-abinbev{
     display: flex;
@@ -135,7 +141,8 @@ root {
     font-weight:600
 }
 .twitter-bird{
-    margin-right:.5rem;
+    margin:0 .5rem;
+
 }
 .card-headlines-wrapper {
     padding: 2rem;
@@ -143,20 +150,32 @@ root {
   flex-direction: column;
   background-color: var(--pure-white);
 }
+.headlines__header{
+  margin: 0;
+
+}
 .news-section {
     display: flex;
+    margin-top:2rem;
 }
 .news-section__title {
     font-size: .8125rem;
+    margin:0;
 }
 .news-section__snippet {
     font-size: 1rem;
-}
-.news-section__snippet-link{
-
+    text-align:left;
+    color:var(--txt-black);
 }
 .news-section__paragraph-container {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
+}
+.news-section__image{
+  margin:0 2rem 0 0;
+  transition: ease-in-out .2s;
+}
+.news-section:hover .news-section__image{
+  transform:scale(90%)
 }
