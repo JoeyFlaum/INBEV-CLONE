@@ -29,7 +29,7 @@ export default function Headlines() {
   ];
   return (
     <div className="headlines__container">
-      <div>Latest Headlines</div>
+      <h3>Latest Headlines</h3>
       <NewsCard content = {content} />
     </div>
   );

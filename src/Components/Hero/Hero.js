@@ -57,9 +57,6 @@ export default function Hero() {
           </a>
         </div>
         <div className = "card-headlines-wrapper">
-          <h3>
-            Latest Headlines
-          </h3>
           <Headlines/>
         </div>
       </aside>
