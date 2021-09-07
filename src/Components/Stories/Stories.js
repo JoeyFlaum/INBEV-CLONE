@@ -1,5 +1,7 @@
 import NewsCard from "../NewsCard/NewsCard";
 import Social from "../Social";
+import "./Stories.css";
+import ShareArrow from "../DesignElements/ShareArrow"
 const content = [
   {
     title: "INNOVATION",
@@ -9,6 +11,7 @@ const content = [
       "Esports: How AB InBev is Capturing One of the World’s Fastest Growing Entertainment Segments",
     alt: "Sports Drinks",
     href: "#",
+    date: "September 07, 2021",
   },
   {
     title: "WATER STEWARDSHIP",
@@ -18,6 +21,7 @@ const content = [
       "Sumá Nativas: “Working together we can restore what was destroyed”",
     alt: "Man with plants",
     href: "#",
+    date: "August 30, 2021",
   },
   {
     title: "BEER & BREWING",
@@ -27,33 +31,44 @@ const content = [
       "Bavaria launches Nativa, a cassava-based beer grown in the Colombian Caribbean",
     alt: "Beer with vegetables in a basket",
     href: "#",
+    date: "August 23, 2021",
   },
   {
     title: "DREAM PEOPLE CULTURE",
     image:
       "https://www.ab-inbev.com/content/dam/universaltemplate/ab-inbev/News/Stories/our-commitment-to-a-better-and-equal-world-for-all--/EqualWorld_427x248.jpg",
-    snippet: "Michel Doukeris Assumes CEO Role at Anheuser-Busch InBev",
+    snippet: "Our Commitment to a Better and Equal World for All",
     alt: "Our Commitment to a Better and Equal World for All",
     href: "#",
+    date: "June 23, 2020",
   },
   {
     title: "OUR STORIES",
     image:
       "https://www.ab-inbev.com/content/dam/universaltemplate/ab-inbev/News/Stories/our-response-to-covid19-making-an-impact-where-it-matters/OurGlobalResponse_427x248.jpg",
-    snippet: "Anheuser Busch InBev Reports Second Quarter 2021 Results",
-    alt: "Our response to COVID19: Making an impact where it matters",
+    snippet: "Our response to COVID19: Making an impact where it matters",
+    alt: "black and white portraits of faces in a grid",
     href: "#",
+    date: "April 08, 2020",
   },
 ];
 export default function Stories() {
-    let newsCardArray = [];
-    content.forEach((obj,i)=>newsCardArray.push(<div className ="stories_news-cards" ><NewsCard content = {obj}/></div>))
+  let newsCardArray = [];
+  content.forEach((obj, i) =>
+    newsCardArray.push(
+      <div className="stories_news-cards">
+        <NewsCard content={obj} />
+        <span className = "stories_date">{obj.date}</span>
+        <i className = "stories_arrow">{<ShareArrow/>}</i>
+      </div>
+    )
+  );
   return (
-  <section className = "stories__container" >
-    {newsCardArray.map(card=>card)}
-    <div className = "stories_news-cards">
-    <Social fill = "#FFFFFF"/>
-    </div>    
-</section>   
-     )
+    <section className="stories__container">
+      {newsCardArray.map((card) => card)}
+      <div className="stories_news-cards social">
+        <Social fill="#FFFFFF" />
+      </div>
+    </section>
+  );
 }
