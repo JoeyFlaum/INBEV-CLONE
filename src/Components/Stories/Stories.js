@@ -57,9 +57,10 @@ export default function Stories() {
   content.forEach((obj, i) =>
     newsCardArray.push(
       <div className="stories_news-cards">
-        <NewsCard content={obj} />
+        <a href = {obj.href} target = "_blank" rel="noreferrer" ><NewsCard content={obj} />
         <span className = "stories_date">{obj.date}</span>
         <i className = "stories_arrow">{<ShareArrow/>}</i>
+        </a>
       </div>
     )
   );
@@ -67,6 +68,7 @@ export default function Stories() {
     <section className="stories__container">
       {newsCardArray.map((card) => card)}
       <div className="stories_news-cards social">
+        <p>Follow us on Social Media</p>
         <Social fill="#FFFFFF" />
       </div>
     </section>

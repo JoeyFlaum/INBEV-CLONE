@@ -8,11 +8,11 @@ export default function Social({fill}){
     console.log(fill)
     return(
         <div className = "social__container">
-            <Facebook fill = {fill}/>
-            <TwitterSimple fill = {fill}/>
-            <LinkedIn fill = {fill}/>
-            <Instagram fill = {fill}/>
-            <Youtube fill = {fill}/>
+            <a href = "https://www.facebook.com/abinbev" target="_blank" rel = "noreferrer"><Facebook fill = {fill}/></a>
+            <a href = "https://twitter.com/abinbev" target="_blank" rel = "noreferrer"><TwitterSimple fill = {fill}/></a>
+            <a href = "https://www.linkedin.com/company/anheuser-busch-inbev" target="_blank" rel = "noreferrer"> <LinkedIn fill = {fill}/></a>
+            <a href = "https://www.instagram.com/abinbev/" target="_blank" rel = "noreferrer"> <Instagram fill = {fill}/></a>
+            <a href = "https://www.youtube.com/user/ABInBevNews" target="_blank" rel = "noreferrer"><Youtube fill = {fill}/></a>
         </div>
     )
 }

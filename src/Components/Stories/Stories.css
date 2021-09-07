@@ -57,4 +57,22 @@ root {
 
 .stories_news-cards.social{
     background: var(--orange-text);
+    display:flex;
+    flex-direction: column;
+}
+.stories_news-cards .social__container a{
+    margin-right:1rem;
+}
+.stories_news-cards.social svg{
+    width:1.5rem;
+    height:1.5rem;
+}
+.stories_news-cards.social p{
+    color:var(--pure-white);
+    font-size:1.75rem;
+    align-self: flex-start;
+    padding:0 2rem;
+}
+.stories_news-cards .social__container{
+    padding:0 2rem;
 }
