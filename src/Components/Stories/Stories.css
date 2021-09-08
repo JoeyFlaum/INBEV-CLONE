@@ -10,6 +10,11 @@ root {
     --dark-grey: rgb(95, 95, 95);
   }
   
+ .stories__wrapper{
+     display:flex;
+     align-items: center;
+     flex-direction: column;
+ } 
 .stories__container{
     display:flex;
     flex-wrap: wrap;
@@ -76,3 +81,38 @@ root {
 .stories_news-cards .social__container{
     padding:0 2rem;
 }
+.stories__button{
+    margin-top: 1rem;
+position: relative;
+display: inline-block;
+overflow: hidden;
+-webkit-mask-image: -webkit-radial-gradient(#fff,#000);
+color: #fff;
+padding: 1.25em 3.5em;
+border: 0;
+border-radius: .4em;
+background-color: var(--orange-text);
+text-decoration:none;
+font-size: .8125rem;
+font-weight:700;
+}
+.stories__button:after{
+position: absolute;
+left: 0;
+content: '';
+background-image: url("https://www.ab-inbev.com/etc.clientlibs/abinbev/clientlibs/clientlib-site/resources/style-assets/primary-button-fill.svg");
+background-size: 60% 250%;
+width: 300%;
+height: 300%;
+background-position: 18% -17%;
+bottom: 0;
+transition: transform 1s;
+backface-visibility: hidden;
+transform: translate(-66%,34%);
+z-index: -1;}
+
+.stories__button:hover:after{
+    transform:translate(0,0);
+    transition: transform 1s;
+    backface-visibility: hidden;
+    }

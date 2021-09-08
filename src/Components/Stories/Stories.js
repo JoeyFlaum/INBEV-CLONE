@@ -57,20 +57,22 @@ export default function Stories() {
   content.forEach((obj, i) =>
     newsCardArray.push(
       <div className="stories_news-cards">
-        <a href = {obj.href} target = "_blank" rel="noreferrer" ><NewsCard content={obj} />
+        <NewsCard content={obj} />
         <span className = "stories_date">{obj.date}</span>
         <i className = "stories_arrow">{<ShareArrow/>}</i>
-        </a>
       </div>
     )
   );
   return (
+    <div className = "stories__wrapper">
     <section className="stories__container">
       {newsCardArray.map((card) => card)}
       <div className="stories_news-cards social">
         <p>Follow us on Social Media</p>
-        <Social fill="#FFFFFF" />
+        <Social fill="#FFFFFF"/>
       </div>
     </section>
+      <a href = "https://www.ab-inbev.com/news-media/" target="_blank" rel ="noreferrer" className = "stories__button">ALL STORIES</a>
+    </div>
   );
 }
