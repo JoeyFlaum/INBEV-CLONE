@@ -15,8 +15,6 @@ export default function HomePage(){
         <Stories/>
         <div className = "home-page__divider"></div>
         <Footer/>
-        <Search/>
-        <h1>HOME PAGE</h1>
         </>
         )
     

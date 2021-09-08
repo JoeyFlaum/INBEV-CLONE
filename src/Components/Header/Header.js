@@ -1,4 +1,4 @@
-import { links } from "./Links";
+import { links } from "../Links";
 import "./Header.css";
 import { useEffect, useState } from "react";
 import Search from "../DesignElements/Search";
