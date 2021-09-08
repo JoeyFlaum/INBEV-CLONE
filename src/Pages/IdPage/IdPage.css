@@ -137,7 +137,7 @@ footer p{
     margin:.9em;
 }
 
-footer *{
+.footer_id-page *{
     color:var(--pure-white);
     text-decoration: none;
     font-weight: 300;

@@ -148,7 +148,7 @@ export default function IdPage({ isLegalAge, formSubmitted,loginAttempts,setlogi
           <button className="enter-site">ENTER</button>
         </form>
         <p>Enjoy Responsibly</p>
-        <footer>
+        <footer className = "footer_id-page">
           <p>
             By submitting this form, you agree to be bound by the Terms of
             Service and Privacy Policy
