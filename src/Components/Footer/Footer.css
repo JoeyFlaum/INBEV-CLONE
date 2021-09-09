@@ -1,38 +1,108 @@
 .footer__main {
   background-color: #f8f8f8;
   margin-top: 3.75rem;
-  width:100vw;
+  width: 100vw;
 }
 .footer__main * {
   text-decoration: none;
   list-style: none;
   color: var(--txt-black);
-  text-shadow:unset;
+  text-shadow: unset;
 }
-.footer__container{
-    display: flex;
-    flex-direction: column;
-    max-width: 1440px;
-    margin: auto;
-    padding: 1rem;
-    justify-content: center;
+.footer__container {
+  display: flex;
+  flex-direction: column;
+  width:75%;
+  margin: auto;
+  padding: 4rem 1rem 1rem;
+  justify-content: center;
 }
 .footer__links-wrapper {
   display: flex;
-  width:83%;
-  margin:auto;
+  width: 83%;
+  margin: auto;
   justify-content: space-between;
 }
-.footer__links-wrapper{
-    padding: 0;
+.footer__links-wrapper {
+  padding: 0;
 }
 
-.footer__ul-list{
-    display:flex;
-    flex-direction: column;
-    justify-content: flex-start; 
-    padding:0;   
+.footer__ul-list {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  padding: 0;
 }
-.footer__image-logo{
-    padding:0 0 2rem 0;
+.footer__ul-list ul {
+  padding: 0;
+}
+.footer_main-tab.logo img {
+  padding: 0 0 2rem 0;
+  margin: 0;
+  height: 1.5rem;
+}
+.footer_main-tab {
+  font-size: 0.875rem;
+  font-weight: 700;
+  line-height: 2rem;
+}
+
+.footer_sub-tab a {
+  font-weight: 300;
+}
+.footer__ul-list.connect :not(:first-child) a {
+  font-weight: 300;
+}
+footer .social__container {
+  display: flex;
+  align-items: flex-end;
+  flex-wrap: nowrap;
+}
+footer .social__container a {
+  margin-right: 10px;
+}
+.footer__ul-list.connect svg {
+  width: 15px;
+  height: 15px;
+}
+
+.footer__ul-list .footer_divider {
+  background-color: var(--ab-red);
+  height: 1px;
+  width: 3rem;
+  margin: 1.5rem 0;
+}
+
+.footer__bottom {
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: space-around;
+  margin:4rem 0 2rem;
+}
+
+.footer__bottom-section p {
+  font-size: 0.875rem;
+  font-weight: 300;
+  margin: 0;
+  line-height: 2rem;
+  text-align: left;
+}
+.footer__bottom-section.two .footer__util-items {
+  display: flex;
+}
+.footer__bottom-section.two .footer__util-items a {
+  font-weight: 300;
+}
+.footer__util-item {
+  padding: 0 0.5rem;
+  font-size: 0.875rem;
+}
+.footer__util-items :not(:last-child){
+  border-right: solid 1px black;
+}
+
+.footer__wave{
+  width:100%;
+  height:3.75rem;
 }

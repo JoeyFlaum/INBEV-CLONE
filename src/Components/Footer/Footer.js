@@ -40,7 +40,7 @@ export default function Footer() {
             </li>
             {shortLinks.map((tab, i) => (
               <li
-                key={`${tab.title}footerli${i}`}
+                key={`${tab}footerli${i}`}
                 className={`footer_main-tab`}
                 data-tab-collection={`tab${i + 1}`}
               >
@@ -55,8 +55,8 @@ export default function Footer() {
           <li className="footer__list-column">
             <ul className="footer__ul-list">
               <li
-                key={`${tab.title}footerli${i}`}
-                className={`footer_main-tab`}
+                key={`${tab}footerli${i}`}
+                className="footer_main-tab"
                 data-tab-collection={`tab${i + 1}`}
               >
                 <a href={tab.mainTab.link} target="_blank" rel="noreferrer">
@@ -81,16 +81,17 @@ export default function Footer() {
           </li>
         ))}
         <li className="footer__list-column">
-          <ul className="footer__ul-list">
+          <ul className="footer__ul-list connect">
             <li className="footer_main-tab">
               <a href="/" target="_blank" rel="noreferrer">
                 CONNECT
               </a>
+            </li>
               <div className="footer_divider"></div>
               {connectTab.map((tab, i) => (
                 <li
                   key={`footerConnectTab${i}`}
-                  className={`"footer_main-tab"`}
+                  className="footer_main-tab"
                   data-tab-collection={`tab${i + 1}`}
                 >
                   <a href="/" target="_blank" rel="noreferrer">
@@ -98,16 +99,15 @@ export default function Footer() {
                   </a>
                 </li>
               ))}
-            </li>
           </ul>
         </li>
       </ul>
       <div className="footer__bottom">
-        <div className="footer__bottom-section">
+        <div className="footer__bottom-section one">
           <p>© 2020 Anheuser-Busch InBev All rights reserved.</p>
           <p>Enjoy Responsibly. Do not share this content with minors.</p>
         </div>
-        <div className="footer__bottom-section">
+        <div className="footer__bottom-section two">
           <ul class="footer__util-items">
             <li class="footer__util-item">
               <a href="/sitemap/" class="footer__util-link">
@@ -135,8 +135,8 @@ export default function Footer() {
           </ul>
         </div>
       </div>
-      <img className = "footer__wave" alt ="footer waver pattern" src = "https://www.ab-inbev.com/etc.clientlibs/abinbev/clientlibs/clientlib-site/resources/brand-assets/footer_wave.svg"></img>
     </div>
+      <img className = "footer__wave" alt ="footer waver pattern" src = "https://www.ab-inbev.com/etc.clientlibs/abinbev/clientlibs/clientlib-site/resources/brand-assets/footer_wave.svg"></img>
     </footer>
   );
 }

@@ -27,6 +27,7 @@ header.fixed {
 }
 header.absolute {
   position: absolute;
+  width:auto;
 }
 .logo {
   display: flex;
