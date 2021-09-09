@@ -1,118 +1,125 @@
 root {
-    --pure-white: #fff;
-    --orange-text: #f49c00;
-    --ab-red: rgb(180, 38, 2);
-    --dim: rgb(0, 0, 0, 0.5);
-    --txt-shdw: 2px 2px black;
-    --txt-black: #231f20;
-    --bx-shdw: rgb(100 100 100 / 28%) 0 6px 17px 1px;
-    --bx-shdw-list: rgb(100 100 100 / 28%) 0 13px 17px 1px;
-    --dark-grey: rgb(95, 95, 95);
-  }
-  
- .stories__wrapper{
-     display:flex;
-     align-items: center;
-     flex-direction: column;
- } 
-.stories__container{
-    display:flex;
-    flex-wrap: wrap;
-    max-width: 90rem;
-    margin:auto;
-    margin-top:7rem;
-    justify-content: center;
-}
-.stories__container *{
-    text-shadow: unset;
-    text-decoration: none;
-}
-.stories_news-cards{
-    width: 437px;
-    height: 540px;
-    box-shadow:rgb(100 100 100 / 28%) 0px 2px 5px;
-    margin:1rem;
-}
-.stories_news-cards:hover img{
-    transform: scale(90%);
-}
-.stories__container .news-section{
-    flex-direction: column;
-    margin:0
+  --pure-white: #fff;
+  --orange-text: #f49c00;
+  --ab-red: rgb(180, 38, 2);
+  --dim: rgb(0, 0, 0, 0.5);
+  --txt-shdw: 2px 2px black;
+  --txt-black: #231f20;
+  --bx-shdw: rgb(100 100 100 / 28%) 0 6px 17px 1px;
+  --bx-shdw-list: rgb(100 100 100 / 28%) 0 13px 17px 1px;
+  --dark-grey: rgb(95, 95, 95);
 }
 
-.stories__container .news-section__image{
-    width:100%;
-    margin:0;
+.stories__wrapper {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
 }
-.stories__container .news-section__paragraph-container{
-    padding:2rem 2rem 0;
+.stories__container {
+  display: flex;
+  flex-wrap: wrap;
+  max-width: 90rem;
+  margin: auto;
+  margin-top: 7rem;
+  justify-content: center;
 }
-.stories__container .news-section__title{
-    font-size: .8125rem;
+.stories__container * {
+  text-shadow: unset;
+  text-decoration: none;
 }
-.stories__container .news-section__snippet{
-    font-size: 1.25rem;
-    line-height: 2rem;   
+.stories_news-cards {
+  width: 437px;
+  height: 540px;
+  box-shadow: rgb(100 100 100 / 28%) 0px 2px 5px;
+  margin: 1rem;
+  position:relative;
 }
-.stories_date{
-   padding:2rem;  
-   font-size: .8125rem;
+.stories_news-cards:hover img {
+  transform: scale(90%);
+}
+.stories__container .news-section {
+  flex-direction: column;
+  margin: 0;
 }
 
-.stories_news-cards.social{
-    background: var(--orange-text);
-    display:flex;
-    flex-direction: column;
+.stories__container .news-section__image {
+  width: 100%;
+  margin: 0;
 }
-.stories_news-cards .social__container a{
-    margin-right:1rem;
+.stories__container .news-section__paragraph-container {
+  padding: 2rem 2rem 0;
 }
-.stories_news-cards.social svg{
-    width:1.5rem;
-    height:1.5rem;
+.stories__container .news-section__title {
+  font-size: 0.8125rem;
 }
-.stories_news-cards.social p{
-    color:var(--pure-white);
-    font-size:1.75rem;
-    align-self: flex-start;
-    padding:0 2rem;
+.stories__container .news-section__snippet {
+  font-size: 1.25rem;
+  line-height: 2rem;
 }
-.stories_news-cards .social__container{
-    padding:0 2rem;
+.stories_date {
+  padding: 2rem;
+  font-size: 0.8125rem;
 }
-.stories__button{
-    margin-top: 1rem;
-position: relative;
-display: inline-block;
-overflow: hidden;
--webkit-mask-image: -webkit-radial-gradient(#fff,#000);
-color: #fff;
-padding: 1.25em 3.5em;
-border: 0;
-border-radius: .4em;
-background-color: var(--orange-text);
-text-decoration:none;
-font-size: .8125rem;
-font-weight:700;
-}
-.stories__button:after{
-position: absolute;
-left: 0;
-content: '';
-background-image: url("https://www.ab-inbev.com/etc.clientlibs/abinbev/clientlibs/clientlib-site/resources/style-assets/primary-button-fill.svg");
-background-size: 60% 250%;
-width: 300%;
-height: 300%;
-background-position: 18% -17%;
-bottom: 0;
-transition: transform 1s;
-backface-visibility: hidden;
-transform: translate(-66%,34%);
-z-index: -1;}
 
-.stories__button:hover:after{
-    transform:translate(0,0);
-    transition: transform 1s;
-    backface-visibility: hidden;
-    }
+.stories_news-cards.social {
+  background: var(--orange-text);
+  display: flex;
+  flex-direction: column;
+}
+.stories_news-cards .social__container a {
+  margin-right: 1rem;
+}
+.stories_news-cards.social svg {
+  width: 1.5rem;
+  height: 1.5rem;
+}
+.stories_news-cards.social p {
+  color: var(--pure-white);
+  font-size: 1.75rem;
+  align-self: flex-start;
+  padding: 0 2rem;
+}
+.stories_news-cards .social__container {
+  padding: 0 2rem;
+}
+.stories__button {
+  margin-top: 1rem;
+  position: relative;
+  display: inline-block;
+  overflow: hidden;
+  -webkit-mask-image: -webkit-radial-gradient(#fff, #000);
+  color: #fff;
+  padding: 1.25em 3.5em;
+  border: 0;
+  border-radius: 0.4em;
+  background-color: var(--orange-text);
+  text-decoration: none;
+  font-size: 0.8125rem;
+  font-weight: 700;
+}
+.stories__button:after {
+  position: absolute;
+  left: 0;
+  content: "";
+  background-image: url("https://www.ab-inbev.com/etc.clientlibs/abinbev/clientlibs/clientlib-site/resources/style-assets/primary-button-fill.svg");
+  background-size: 60% 250%;
+  width: 300%;
+  height: 300%;
+  background-position: 18% -17%;
+  bottom: 0;
+  transition: transform 1s;
+  backface-visibility: hidden;
+  transform: translate(-66%, 34%);
+  z-index: -1;
+}
+
+.stories__button:hover:after {
+  transform: translate(0, 0);
+  transition: transform 1s;
+  backface-visibility: hidden;
+}
+.stories_arrow{
+    position:absolute;
+    bottom:1rem;
+    right: 1rem;
+}
