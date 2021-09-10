@@ -6,15 +6,14 @@ import Globe from "../DesignElements/Globe";
 
 //ToDo: Refactor Menu show functionality | Move window position useEffect to lower level component(Idea is to stop rerendering entire header every time the window event triggers)
 
-export default function Header() {
+export default function Header({scrollDirection}) {
   const [screenX, setscreenX] = useState();
   const [screenY, setscreenY] = useState();
   const [tabX, settabX] = useState();
   const [tabY, settabY] = useState();
   const [activeMainTab, setactiveMainTab] = useState();
   const [subMenu, setsubMenu] = useState([]);
-  const [scrollY, setscrollY] = useState(0);
-  const [scrollDirection, setscrollDirection] = useState("up");
+
 
   //when window/menu x and y match, menu should be visible
   const menuShow = (e) => {////////////>>>>>>>>> ACCEPTABLE <<<<<<<<<<<< ////////////////
@@ -91,19 +90,11 @@ export default function Header() {
 
   useEffect(() => {////////////>>>>>>>>> ACCEPTABLE <<<<<<<<<<<< ////////////////
     window.addEventListener("mousemove", windowMousePostion);
-    window.addEventListener("scroll", scrollPath);
     return () => {
       window.removeEventListener("mousemove", windowMousePostion);
-      window.removeEventListener("scroll", scrollPath);
     };
   });
 
-  const scrollPath = (e) => {////////////>>>>>>>>> ACCEPTABLE <<<<<<<<<<<< ////////////////
-    window.scrollY < scrollY
-      ? setscrollDirection("up")
-      : setscrollDirection("down");
-    setscrollY(window.scrollY);
-  };
   const windowMousePostion = (e) => {////////////>>>>>>>>> ACCEPTABLE <<<<<<<<<<<< ////////////////
     setscreenX(e.screenX);
     setscreenY(e.screenY);
@@ -112,7 +103,7 @@ export default function Header() {
     }
   };
   return (
-    <header className={scrollDirection === "up" ? "fixed" : "absolute"}>
+    <header className= {`header__main ${scrollDirection === "up" ? "fixed" : "absolute"}`}>
       <h1 className="logo">
         <a href="/" rel="home">
           <img

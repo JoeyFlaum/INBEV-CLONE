@@ -59,6 +59,18 @@ root {
 .stories_date {
   padding: 2rem;
   font-size: 0.8125rem;
+  position:absolute;
+  bottom:3rem;
+  color:var(--dark-grey)
+}
+.stories__wrapper .news-section__paragraph-container:after{
+  content:"";
+  background-color:rgba(169, 169, 169, 0.116);
+  height:1px;
+  position:absolute;
+  left:0;
+  right:0;
+  bottom:3.5rem;
 }
 
 .stories_news-cards.social {
