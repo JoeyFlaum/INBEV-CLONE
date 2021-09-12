@@ -28,8 +28,6 @@ export default function HomePage(){
     window.removeEventListener('resize', ()=>setwindowWidth(window.innerWidth));
     window.removeEventListener("scroll", scrollPath);} 
     )})
-
-    console.log(windowWidth)
     return(
         <>
         {windowWidth>1250?<Header scrollDirection ={scrollDirection}/> :<MobileHeader scrollDirection ={scrollDirection}/>}

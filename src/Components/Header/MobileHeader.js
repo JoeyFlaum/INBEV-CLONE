@@ -1,5 +1,5 @@
-import Search from "../DesignElements/Search";
-import Globe from "../DesignElements/Globe";
+import Search from "../../Assets/Search";
+import Globe from "../../Assets/Globe";
 export default function MobileHeader({scrollDirection}){
     return(
         <header className= {`header__main ${scrollDirection === "up" ? "fixed" : "absolute"}`}>

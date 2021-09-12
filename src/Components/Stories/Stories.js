@@ -1,7 +1,7 @@
 import NewsCard from "../NewsCard/NewsCard";
 import Social from "../Social";
 import "./Stories.css";
-import ShareArrow from "../DesignElements/ShareArrow"
+import ShareArrow from "../../Assets/ShareArrow"
 const content = [
   {
     title: "INNOVATION",

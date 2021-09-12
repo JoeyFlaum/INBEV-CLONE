@@ -1,8 +1,8 @@
 import { links } from "../Links";
 import "./Header.css";
 import { useEffect, useState } from "react";
-import Search from "../DesignElements/Search";
-import Globe from "../DesignElements/Globe";
+import Search from "../../Assets/Search";
+import Globe from "../../Assets/Globe";
 
 //ToDo: Refactor Menu show functionality | Move window position useEffect to lower level component(Idea is to stop rerendering entire header every time the window event triggers)
 

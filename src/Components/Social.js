@@ -1,8 +1,8 @@
-import Facebook from "./DesignElements/Facebook"
-import TwitterSimple from "./DesignElements/TwitterSimple"
-import LinkedIn from "./DesignElements/LinkedIn"
-import Instagram from "./DesignElements/Instagram"
-import Youtube from "./DesignElements/Youtube"
+import Facebook from "../Assets/Facebook"
+import TwitterSimple from "../Assets/TwitterSimple"
+import LinkedIn from "../Assets/LinkedIn"
+import Instagram from "../Assets/Instagram"
+import Youtube from "../Assets/Youtube"
 
 export default function Social({fill}){
     console.log(fill)

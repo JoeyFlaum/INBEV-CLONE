@@ -1,4 +1,4 @@
-import ColorStrip from "../ColorStrip/ColorStrip";
+import ColorStrip from "../../Assets/ColorStrip";
 import "./Mission.css"
 export default function Mission() {
   return (

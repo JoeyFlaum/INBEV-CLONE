@@ -2,7 +2,7 @@ import "./IdPage.css";
 import { useState } from "react";
 import countries from "./CountriesCombined"; //TO DO: Countries function re-renders on all updates. Only needed once.
 import AgeGate from "./AgeGate";
-import ColorStrip from "../../Components/ColorStrip/ColorStrip";
+import ColorStrip from "../../Assets/ColorStrip";
 
 let months = [
   "January",

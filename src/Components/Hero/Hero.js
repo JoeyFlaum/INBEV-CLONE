@@ -1,5 +1,5 @@
 import "./Hero.css";
-import TwitterBird from "../DesignElements/TwitterBird";
+import TwitterBird from "../../Assets/TwitterBird";
 import Headlines from "../Headlines/Headlines"
 
 
