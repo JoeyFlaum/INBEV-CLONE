@@ -1,8 +1,18 @@
 import Search from "../../Assets/Search";
 import Globe from "../../Assets/Globe";
-export default function MobileHeader({scrollDirection}){
-    return(
-        <header className= {`header__main ${scrollDirection === "up" ? "fixed" : "absolute"}`}>
+import "./Header.css";
+import { useState } from "react";
+import MobileNav from "../MobileNav";
+
+export default function MobileHeader({ scrollDirection }) {
+  const [isMenuOpen,setisMenuOpen] = useState(false);
+
+  return (
+    <header
+      className={`header__main ${
+        scrollDirection === "up" ? "fixed" : "absolute"
+      }`}
+    >
       <h1 className="logo">
         <a href="/" rel="home">
           <img
@@ -100,6 +110,7 @@ export default function MobileHeader({scrollDirection}){
         <div className="utilities-search">
           <Search />
         </div>
+        <MobileNav setisMenuOpen={setisMenuOpen} isMenuOpen = {isMenuOpen} />
       </div>
     </header>
   );

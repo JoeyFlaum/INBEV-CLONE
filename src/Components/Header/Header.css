@@ -5,9 +5,9 @@
   --dim: rgb(0, 0, 0, 0.5);
   --txt-shdw: 2px 2px black;
   --txt-black: #231f20;
-  --bx-shdw:rgb(100 100 100 / 28%) 0 6px 17px 1px;
-  --bx-shdw-list:rgb(100 100 100 / 28%) 0 13px 17px 1px;
-  --dark-grey:rgb(95, 95, 95);
+  --bx-shdw: rgb(100 100 100 / 28%) 0 6px 17px 1px;
+  --bx-shdw-list: rgb(100 100 100 / 28%) 0 13px 17px 1px;
+  --dark-grey: rgb(95, 95, 95);
 }
 header {
   height: 5.5rem;
@@ -27,13 +27,13 @@ header.fixed {
 }
 header.absolute {
   position: absolute;
-  width:100%;
+  width: 100%;
 }
 .logo {
   display: flex;
   justify-content: center;
   flex-grow: 1;
-  margin:0;
+  margin: 0;
 }
 .logo img {
   height: 18.75px;
@@ -54,7 +54,7 @@ header.absolute {
   padding: unset;
   flex-basis: 0;
 }
-.main-tab:hover{
+.main-tab:hover {
   box-shadow: var(--bx-shdw);
 }
 .main-tab,
@@ -68,7 +68,7 @@ header.absolute {
   align-items: center;
   height: 2.5rem;
   width: max-content;
-  padding: .75rem;
+  padding: 0.75rem;
 }
 nav {
   flex-grow: 10;
@@ -81,34 +81,36 @@ nav {
   justify-content: center;
   position: absolute;
   visibility: hidden;
-  padding:0;
+  padding: 0;
   width: 240px;
 }
 
 .sub-tab-1,
-.sub-tab-2{
-  display:flex;
+.sub-tab-2 {
+  display: flex;
   position: relative;
   height: 2rem;
   padding: 2px 15px;
-  line-height:1rem;
+  line-height: 1rem;
   align-items: center;
 }
-.sub-tab-1.active,.sub-tab-2 a{
-  background:var(--txt-black);
-  color:var(--pure-white)
+.sub-tab-1.active,
+.sub-tab-2 a {
+  background: var(--txt-black);
+  color: var(--pure-white);
 }
-.main-tab-link:hover,.sub-tab-1:hover,
-.sub-tab-2:hover{
-  color:var(--orange-text)
+.main-tab-link:hover,
+.sub-tab-1:hover,
+.sub-tab-2:hover {
+  color: var(--orange-text);
 }
 .list.sub-tabs-1 a,
-.list.sub-tabs-2 a{
-  position:absolute;
-  top:0;
-  bottom:0;
-  left:0;
-  right:0;
+.list.sub-tabs-2 a {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
 }
 .list.sub-tabs-1.active,
 .list.sub-tabs-2.active {
@@ -132,36 +134,38 @@ header li {
 header a {
   text-decoration: none;
 }
-.list.sub-tabs-1.active,.list.sub-tabs-2.active{
+.list.sub-tabs-1.active,
+.list.sub-tabs-2.active {
   box-shadow: var(--bx-shdw-list);
-  background:var(--pure-white);
+  background: var(--pure-white);
 }
-.list.sub-tabs-2.active{
- box-shadow:unset;
+.list.sub-tabs-2.active {
+  box-shadow: unset;
 }
-.sub-tab-1.has-submenu:before{
-  content:"";
-  width:8px;
-  background:var(--txt-black);
+.sub-tab-1.has-submenu:before {
+  content: "";
+  width: 8px;
+  background: var(--txt-black);
   height: 1px;
   z-index: 10;
   position: absolute;
-  bottom:55%;
-  right:.75rem;
-  transform:rotate(40deg);
+  bottom: 55%;
+  right: 0.75rem;
+  transform: rotate(40deg);
 }
-.sub-tab-1.has-submenu:after{
-  content:"";
-  width:8px;
-  background:var(--txt-black);
+.sub-tab-1.has-submenu:after {
+  content: "";
+  width: 8px;
+  background: var(--txt-black);
   height: 1px;
   z-index: 10;
   position: absolute;
-  top:55%;
-  right:.75rem;
-  transform:rotate(-40deg);
+  top: 55%;
+  right: 0.75rem;
+  transform: rotate(-40deg);
 }
-.sub-tab-1.has-submenu:before,.sub-tab-1.has-submenu:after{
+.sub-tab-1.has-submenu:before,
+.sub-tab-1.has-submenu:after {
   background-color: var(--dark-grey);
 }
 
@@ -169,17 +173,65 @@ header a {
   display: flex;
   flex-grow: 1;
   justify-content: center;
-  padding-right:9px;
+  padding-right: 9px;
 }
 .utilities-globe,
-.utilities-search {
+.utilities-search,.utilities-menu{
   height: 1rem;
   width: auto;
   padding: 0.65rem;
-  padding-bottom:.85rem;
+  padding-bottom: 0.85rem;
   cursor: pointer;
-
 }
 .utilities-container svg {
   height: 1.3rem;
+}
+
+@media screen and (max-width: 1250px) {
+  header {
+    height: 3rem;
+  }
+  .logo {
+    justify-content: flex-start;
+  }
+  .logo img {
+    margin: unset;
+  }
+  .utilities-container {
+    justify-content: flex-end;
+  }
+  .utilities-menu {
+    display: flex;
+    background-repeat: no-repeat;
+    background-position: center;
+    align-self: center;
+    background-size: 130%;
+    position: relative;
+  
+  }
+  .utilities-menu.closed {
+    background-image: url("https://ljc-dev.github.io/testing0/ham.svg");
+  }
+  .utilities-menu.open {
+    background-image: url("https://ljc-dev.github.io/testing0/ham-close.svg");
+  }
+  .utilities-menu.closed:before{
+    position:absolute;
+    content:"";
+    background-color:var(--pure-white);
+    height:5.1px;
+    bottom: 53.5%;
+    left:0;
+    right:0;
+  }
+  .utilities-menu.closed:after{
+    position:absolute;
+    content:"";
+    background-color:var(--pure-white);
+    height: 5px;
+    bottom: 37%;
+    left:0;
+    right:0;
+
+  }
 }

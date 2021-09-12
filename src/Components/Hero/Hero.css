@@ -179,3 +179,8 @@ root {
 .news-section:hover .news-section__image{
   transform:scale(90%);
 }
+@media screen and (max-width: 1250px) {
+.hero-container{
+  margin-top: calc(88px - 2rem)
+}
+}
