@@ -1,5 +1,4 @@
 export default function Facebook({ fill }) {
-  console.log("fb",fill)
   return (
     <i className ="facebook__icon">
     <svg

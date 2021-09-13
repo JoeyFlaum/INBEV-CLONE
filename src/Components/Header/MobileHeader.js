@@ -3,10 +3,16 @@ import Globe from "../../Assets/Globe";
 import "./Header.css";
 import { useState } from "react";
 import MobileNav from "../MobileNav";
+import { links } from "../Links";
+import SubMenuOne from "./SubMenuOne";
 
 export default function MobileHeader({ scrollDirection }) {
-  const [isMenuOpen,setisMenuOpen] = useState(false);
-
+  const [isMenuOpen, setisMenuOpen] = useState(false);
+  //on click show next menu
+  //when next menu shows, parent U
+  const showNextMenu = (e) =>{
+    console.dir(e.target.parentNode.innerText)
+    }
   return (
     <header
       className={`header__main ${
@@ -21,45 +27,35 @@ export default function MobileHeader({ scrollDirection }) {
           />
         </a>
       </h1>
-      {/* <nav>
-        <ul className="list-main-tabs" onMouseLeave={menuHide}>
+      <nav>
+        <ul className={`list-main-tabs ${isMenuOpen ? "visible" : "hidden"}`}>
           {links.tabs.map((tab, i) => {
             //map all main tabs, level 1 subtabs, level 2 subtabs
             return (
               <li
-                key={`${tab.title}li${i}`}
+                key={`${tab.mainTab.title}li${i}`}
                 className={`main-tab`}
                 data-tab-collection={`tab${i + 1}`}
-                onMouseMove={(e) => {
-                  settabX(e.screenX);
-                  settabY(e.screenY);
-                  menuShow(e);
-                }}
-                onClick={() =>
-                  subMenu.forEach((element) =>
-                    element.classList.remove("active")
-                  )
-                }
               >
                 <a
-                  key={`${tab.title}a${i + 10}`}
+                  key={`${tab.mainTab.title}a${i + 10}`}
                   className={`main-tab-link has-submenu`}
                   data-tab-collection={`tab${i + 1}`}
                   href={tab.mainTab.link}
+                  onClick = {(e)=>showNextMenu(e)}
                 >
                   {tab.mainTab.title}
                 </a>
                 <ul
-                  key={`${tab.title}ul${i + 1000}`}
+                  key={`${tab.mainTab.title}ul${i + 1000}`}
                   className={`list sub-tabs-1`}
                   data-tab-collection={`tab${i + 1}`}
                 >
                   {tab.subTabs.map((subTab) => (
                     <li
                       key={`${subTab.title}li${i + 10000}`}
-                      className={`sub-tab-1`} 
+                      className={`sub-tab-1`}
                       data-tab-collection={`tab${i + 1}`}
-                      onMouseLeave={subMenuHide}
                     >
                       <a
                         key={`${subTab.title}a${i + 20000}`}
@@ -102,7 +98,8 @@ export default function MobileHeader({ scrollDirection }) {
             );
           })}
         </ul>
-      </nav> */}
+        <SubMenuOne/>{/**plan is to send menu value and filter link that matches innerText */}
+      </nav>
       <div className="utilities-container">
         <div className="utilities-globe">
           <Globe />
@@ -110,7 +107,7 @@ export default function MobileHeader({ scrollDirection }) {
         <div className="utilities-search">
           <Search />
         </div>
-        <MobileNav setisMenuOpen={setisMenuOpen} isMenuOpen = {isMenuOpen} />
+        <MobileNav setisMenuOpen={setisMenuOpen} isMenuOpen={isMenuOpen} />
       </div>
     </header>
   );

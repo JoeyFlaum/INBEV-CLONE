@@ -5,7 +5,6 @@ import Instagram from "../Assets/Instagram"
 import Youtube from "../Assets/Youtube"
 
 export default function Social({fill}){
-    console.log(fill)
     return(
         <div className = "social__container">
             <a href = "https://www.facebook.com/abinbev" target="_blank" rel = "noreferrer"><Facebook fill = {fill}/></a>
