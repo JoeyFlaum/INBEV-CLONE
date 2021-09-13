@@ -233,7 +233,7 @@ header a {
     left:0;
     right:0;
   }
-  .list-main-tabs{
+  .list-main-tabs,.list-sub-tabs-1{
     position:absolute;
     flex-direction: column;
     width:300px;
@@ -249,4 +249,5 @@ header a {
     right:0;
     z-index:1
   }
+  
 }

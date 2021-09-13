@@ -1,5 +1,11 @@
 import { links } from "../Links";
+import { useState } from "react";
+import SubMenuTwo from "./SubMenuTwo";
 export default function SubMenuOne({ nextMenuMainTitle }) {
+  const [nextSubMenuMainTitle, setnextSubMenuMainTitle] = useState("");
+  const showNextMenu = (e) => {
+    setnextSubMenuMainTitle(e.target.parentNode.innerText.toString());
+  };
   let filteredTab = nextMenuMainTitle
     ? links.tabs.filter((tab) => {
         return (
@@ -7,10 +13,14 @@ export default function SubMenuOne({ nextMenuMainTitle }) {
         );
       })
     : undefined;
-console.log("sub1");
   return (
-    <div className="sub-tabs-1_container">
-      <ul className="list-main-tabs">
+    <div
+      className={`sub-tabs-1_container ${filteredTab ? "visible" : "hidden"}`}
+    >
+      <ul
+        className={`list-main-tabs ${filteredTab ? "visible" : "hidden"}`}
+        onClick={(e) => showNextMenu(e)}
+      >
         <li className="main-tab">
           {filteredTab ? (
             <a
@@ -22,13 +32,22 @@ console.log("sub1");
           ) : null}
         </li>
         {filteredTab
-          ? filteredTab[0].subTabs.map((subTab, i) => (
-              <li key={`${subTab.title}mobile${i}`} className={`sub-tab-1`}>
-                {subTab.title}
-              </li>
-            ))
+          ? filteredTab[0].subTabs.map(
+              (subTab, i /**if submenu exists, remove link */) => (
+                <li key={`${subTab.title}mobile${i}`} className={`sub-tab-1`}>
+                  {subTab.subTabs ? (
+                    subTab.title
+                  ) : (
+                    <a className ="link sub-tab-1" href={subTab.link} target="_blank" rel="noreferrer">
+                      {subTab.title}
+                    </a>
+                  )}
+                </li>
+              )
+            )
           : null}
       </ul>
+      <SubMenuTwo nextSubMenuMainTitle={nextSubMenuMainTitle} />
     </div>
   );
 }

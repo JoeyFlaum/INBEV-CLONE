@@ -18,9 +18,7 @@ export default function MobileHeader({ scrollDirection }) {
   };
   return (
     <header
-      className={`header__main ${
-        scrollDirection === "up" ? "fixed" : "absolute"
-      }`}
+      className="header__main"
     >
       <h1 className="logo">
         <a href="/" rel="home">
