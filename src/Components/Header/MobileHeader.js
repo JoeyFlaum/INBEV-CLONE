@@ -8,11 +8,14 @@ import SubMenuOne from "./SubMenuOne";
 
 export default function MobileHeader({ scrollDirection }) {
   const [isMenuOpen, setisMenuOpen] = useState(false);
+  const [nextMenuMainTitle, setnextMenuMainTitle] = useState("");
+  const [isSubMenuOpen, setisSubMenuOpen] = useState("");
+
   //on click show next menu
   //when next menu shows, parent U
-  const showNextMenu = (e) =>{
-    console.dir(e.target.parentNode.innerText)
-    }
+  const showNextMenu = (e) => {
+    setnextMenuMainTitle(e.target.parentNode.innerText.toString());
+  };
   return (
     <header
       className={`header__main ${
@@ -42,7 +45,7 @@ export default function MobileHeader({ scrollDirection }) {
                   className={`main-tab-link has-submenu`}
                   data-tab-collection={`tab${i + 1}`}
                   href={tab.mainTab.link}
-                  onClick = {(e)=>showNextMenu(e)}
+                  onClick={(e) => showNextMenu(e)}
                 >
                   {tab.mainTab.title}
                 </a>
@@ -79,14 +82,7 @@ export default function MobileHeader({ scrollDirection }) {
                               className={`sub-tab-2 tab${i + 1}`}
                               data-tab-collection={`tab${i + 1}`}
                             >
-                              <a
-                                key={`${subTab.title}a${i + 50000}`}
-                                className={`sub-tab-2 link tab${i + 1}`}
-                                href={subTab.link}
-                                data-tab-collection={`tab${i + 1}`}
-                              >
-                                {subTab.title}
-                              </a>
+                              {subTab.title}
                             </li>
                           ))}
                         </ul>
@@ -98,7 +94,8 @@ export default function MobileHeader({ scrollDirection }) {
             );
           })}
         </ul>
-        <SubMenuOne/>{/**plan is to send menu value and filter link that matches innerText */}
+        <SubMenuOne nextMenuMainTitle={nextMenuMainTitle} />
+        {/**plan is to send menu value and filter link that matches innerText */}
       </nav>
       <div className="utilities-container">
         <div className="utilities-globe">
