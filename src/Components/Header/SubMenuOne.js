@@ -3,8 +3,11 @@ import { useState } from "react";
 import SubMenuTwo from "./SubMenuTwo";
 export default function SubMenuOne({ nextMenuMainTitle }) {
   const [nextSubMenuMainTitle, setnextSubMenuMainTitle] = useState("");
+  const [isSubMenuTwoVisible,setisSubMenuTwoVisible] = useState(false);
+
   const showNextMenu = (e) => {
-    setnextSubMenuMainTitle(e.target.parentNode.innerText.toString());
+    setnextSubMenuMainTitle(e.target.innerText.toString());
+    setisSubMenuTwoVisible(true);
   };
   let filteredTab = nextMenuMainTitle
     ? links.tabs.filter((tab) => {
@@ -13,6 +16,7 @@ export default function SubMenuOne({ nextMenuMainTitle }) {
         );
       })
     : undefined;
+    console.log(nextSubMenuMainTitle)
   return (
     <div
       className={`sub-tabs-1_container ${filteredTab ? "visible" : "hidden"}`}
@@ -47,7 +51,7 @@ export default function SubMenuOne({ nextMenuMainTitle }) {
             )
           : null}
       </ul>
-      <SubMenuTwo nextSubMenuMainTitle={nextSubMenuMainTitle} />
+      <SubMenuTwo nextSubMenuMainTitle={nextSubMenuMainTitle} filteredTab = {filteredTab} isSubMenuTwoVisible ={isSubMenuTwoVisible} />
     </div>
   );
 }
