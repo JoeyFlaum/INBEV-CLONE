@@ -46,7 +46,7 @@ export default function MobileHeader({ scrollDirection }) {
             );
           })}
         </ul>
-        <SubMenuOne nextMenuMainTitle={nextMenuMainTitle} />
+        <SubMenuOne nextMenuMainTitle={nextMenuMainTitle} setnextMenuMainTitle = {setnextMenuMainTitle} />
         {/**plan is to send menu value and filter link that matches innerText */}
       </nav>
       <div className="utilities-container">

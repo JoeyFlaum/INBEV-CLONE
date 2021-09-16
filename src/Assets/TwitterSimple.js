@@ -16,9 +16,9 @@ export default function TwitterSimple({ fill }) {
         <g
           id="DESKTOP"
           stroke="none"
-          stroke-width="1"
+          strokeWidth="1"
           fill="none"
-          fill-rule="evenodd"
+          fillRule="evenodd"
         >
           <g
             id="Home-Final"

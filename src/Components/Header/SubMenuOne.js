@@ -1,13 +1,22 @@
 import { links } from "../Links";
 import { useState } from "react";
 import SubMenuTwo from "./SubMenuTwo";
-export default function SubMenuOne({ nextMenuMainTitle }) {
+export default function SubMenuOne({
+  nextMenuMainTitle,
+  setnextMenuMainTitle,
+}) {
   const [nextSubMenuMainTitle, setnextSubMenuMainTitle] = useState("");
-  const [isSubMenuTwoVisible,setisSubMenuTwoVisible] = useState(false);
+  const [isSubMenuTwoVisible, setisSubMenuTwoVisible] = useState(false);
 
   const showNextMenu = (e) => {
-    setnextSubMenuMainTitle(e.target.innerText.toString());
-    setisSubMenuTwoVisible(true);
+    if (e.target.nodeName.toLowerCase() !== "button") {
+      setnextSubMenuMainTitle(e.target.innerText.toString());
+      setisSubMenuTwoVisible(true);
+    }
+  };
+  const previousMenu = () => {
+    console.log("hit")
+    setnextMenuMainTitle("");
   };
   let filteredTab = nextMenuMainTitle
     ? links.tabs.filter((tab) => {
@@ -16,7 +25,7 @@ export default function SubMenuOne({ nextMenuMainTitle }) {
         );
       })
     : undefined;
-    console.log(nextSubMenuMainTitle)
+  console.log(nextSubMenuMainTitle);
   return (
     <div
       className={`sub-tabs-1_container ${filteredTab ? "visible" : "hidden"}`}
@@ -27,12 +36,18 @@ export default function SubMenuOne({ nextMenuMainTitle }) {
       >
         <li className="main-tab">
           {filteredTab ? (
-            <a
-              className="main-tab-link has-submenu"
-              href={filteredTab[0].mainTab.link}
-            >
-              {filteredTab[0].mainTab.title}
-            </a>
+            <div className="sub-menu-nav_container">
+              <button
+                className="sub-tab-2_button back-button"
+                onClick={previousMenu}
+              >{`<`}</button>
+              <a
+                className="main-tab-link has-submenu"
+                href={filteredTab[0].mainTab.link}
+              >
+                {filteredTab[0].mainTab.title}
+              </a>
+            </div>
           ) : null}
         </li>
         {filteredTab
@@ -42,7 +57,12 @@ export default function SubMenuOne({ nextMenuMainTitle }) {
                   {subTab.subTabs ? (
                     subTab.title
                   ) : (
-                    <a className ="link_sub-tab-1" href={subTab.link} target="_blank" rel="noreferrer">
+                    <a
+                      className="link_sub-tab-1"
+                      href={subTab.link}
+                      target="_blank"
+                      rel="noreferrer"
+                    >
                       {subTab.title}
                     </a>
                   )}
@@ -51,7 +71,11 @@ export default function SubMenuOne({ nextMenuMainTitle }) {
             )
           : null}
       </ul>
-      <SubMenuTwo nextSubMenuMainTitle={nextSubMenuMainTitle} filteredTab = {filteredTab} isSubMenuTwoVisible ={isSubMenuTwoVisible} />
+      <SubMenuTwo
+        nextSubMenuMainTitle={nextSubMenuMainTitle}
+        filteredTab={filteredTab}
+        isSubMenuTwoVisible={isSubMenuTwoVisible}
+      />
     </div>
   );
 }

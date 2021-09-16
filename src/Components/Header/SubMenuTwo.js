@@ -9,7 +9,6 @@ export default function SubMenuTwo({
           subTab.title.toLowerCase() === nextSubMenuMainTitle.toLowerCase()
       )
     : null;
-  console.log(filteredTab,filteredSubTab,"Tab");
   return (
     <div
       className={`sub-tabs-2_container ${
@@ -21,23 +20,27 @@ export default function SubMenuTwo({
           isSubMenuTwoVisible ? "visible" : "hidden"
         }`}
       >
-        {nextSubMenuMainTitle? 
-        <li className="sub-tab-1">
-            <a
-              className="main-tab-link has-submenu"
-              href={filteredSubTab[0].link}
-            >
-              {filteredSubTab[0].title}
-            </a>
-        </li>: null}
+        {nextSubMenuMainTitle ? (
+          <li className="sub-tab-2">
+            <div className="sub-menu-nav_container">
+              <button className="sub-tab-2_button back-button ">{`<`}</button>
+              <a
+                className="main-tab-link has-submenu"
+                href={filteredSubTab[0].link}
+              >
+                {filteredSubTab[0].title}
+              </a>
+            </div>
+          </li>
+        ) : null}
         {nextSubMenuMainTitle
-          ? filteredSubTab[0].subTabs.map((subTab, i) => 
-              <li key={`${subTab.title}mobile${i}`} className={`sub-tab-2`}>
+          ? filteredSubTab[0].subTabs.map((subTab, i) => (
+              <li key={`${subTab.title}mobile${i+100}`} className={`sub-tab-2`}>
                 <a href={subTab.link} target="_blank" rel="noreferrer">
                   {subTab.title}
                 </a>
               </li>
-            )
+            ))
           : null}
       </ul>
     </div>

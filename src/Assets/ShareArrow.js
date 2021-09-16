@@ -4,7 +4,7 @@ return(<svg width="18px" height="15px" viewBox="0 0 18 15" version="1.1" xmlns="
     <title>Icon</title>
     <desc>Created with Sketch.</desc>
     <defs></defs>
-    <g id="DESKTOP" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+    <g id="DESKTOP" stroke="none" strokeWidth="1" fill="none" fillRule="evenodd">
         <g id="Home-FINAL" transform="translate(-1335.000000, -1809.000000)" fill="#C4C4C4">
             <g id="News" transform="translate(40.000000, 1218.000000)">
                 <g id="Article_w_Share" transform="translate(933.000000, 118.000000)">

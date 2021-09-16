@@ -56,7 +56,7 @@ export default function Stories() {
   let newsCardArray = [];
   content.forEach((obj, i) =>
     newsCardArray.push(
-      <div className="stories_news-cards">
+      <div className="stories_news-cards" key = {obj+i}>
         <NewsCard content={obj} />
         <span className = "stories_date">{obj.date}</span>
         <i className = "stories_arrow">{<ShareArrow/>}</i>
@@ -66,7 +66,7 @@ export default function Stories() {
   return (
     <div className = "stories__wrapper">
     <section className="stories__container">
-      {newsCardArray.map((card) => card)}
+      {newsCardArray.map((card,) => card)}
       <div className="stories_news-cards social">
         <p>Follow us on Social Media</p>
         <Social fill="#FFFFFF"/>

@@ -181,6 +181,6 @@ root {
 }
 @media screen and (max-width: 1250px) {
 .hero-container{
-  margin-top: calc(88px - 2rem)
+  margin-top: calc(88px - 2.5rem)
 }
 }
