@@ -42,7 +42,7 @@ export default function SubMenuOne({ nextMenuMainTitle }) {
                   {subTab.subTabs ? (
                     subTab.title
                   ) : (
-                    <a className ="link sub-tab-1" href={subTab.link} target="_blank" rel="noreferrer">
+                    <a className ="link_sub-tab-1" href={subTab.link} target="_blank" rel="noreferrer">
                       {subTab.title}
                     </a>
                   )}

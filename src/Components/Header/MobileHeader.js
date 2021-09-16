@@ -14,7 +14,8 @@ export default function MobileHeader({ scrollDirection }) {
   //on click show next menu
   //when next menu shows, parent U
   const showNextMenu = (e) => {
-    setnextMenuMainTitle(e.target.parentNode.innerText.toString());
+    let text = e.target.innerText
+    text!=="MENU"&&setnextMenuMainTitle(text.toString());
   };
   return (
     <header
@@ -30,6 +31,7 @@ export default function MobileHeader({ scrollDirection }) {
       </h1>
       <nav>
         <ul className={`list-main-tabs ${isMenuOpen ? "visible" : "hidden"}`}>
+          <li className="main-tab">MENU</li> 
           {links.tabs.map((tab, i) => {
             //map all main tabs, level 1 subtabs, level 2 subtabs
             return (
@@ -37,57 +39,9 @@ export default function MobileHeader({ scrollDirection }) {
                 key={`${tab.mainTab.title}li${i}`}
                 className={`main-tab`}
                 data-tab-collection={`tab${i + 1}`}
+                onClick = {(e)=>showNextMenu(e)}
               >
-                <a
-                  key={`${tab.mainTab.title}a${i + 10}`}
-                  className={`main-tab-link has-submenu`}
-                  data-tab-collection={`tab${i + 1}`}
-                  href={tab.mainTab.link}
-                  onClick={(e) => showNextMenu(e)}
-                >
                   {tab.mainTab.title}
-                </a>
-                <ul
-                  key={`${tab.mainTab.title}ul${i + 1000}`}
-                  className={`list sub-tabs-1`}
-                  data-tab-collection={`tab${i + 1}`}
-                >
-                  {tab.subTabs.map((subTab) => (
-                    <li
-                      key={`${subTab.title}li${i + 10000}`}
-                      className={`sub-tab-1`}
-                      data-tab-collection={`tab${i + 1}`}
-                    >
-                      <a
-                        key={`${subTab.title}a${i + 20000}`}
-                        className={`sub-tab-1 link ${
-                          subTab.subTabs ? "has-submenu" : ""
-                        }`} //if submenu exists, add class
-                        data-tab-collection={`tab${i + 1}`}
-                        href={subTab.link}
-                      >
-                        {subTab.title}
-                      </a>
-                      {subTab.subTabs ? (
-                        <ul
-                          key={`${subTab.title}ul${i + 30000}`}
-                          className={`list sub-tabs-2`}
-                          data-tab-collection={`tab${i + 1}`}
-                        >
-                          {subTab.subTabs.map((subTab) => (
-                            <li
-                              key={`${subTab.title}li${i + 40000}`}
-                              className={`sub-tab-2 tab${i + 1}`}
-                              data-tab-collection={`tab${i + 1}`}
-                            >
-                              {subTab.title}
-                            </li>
-                          ))}
-                        </ul>
-                      ) : null}
-                    </li>
-                  ))}
-                </ul>
               </li>
             );
           })}

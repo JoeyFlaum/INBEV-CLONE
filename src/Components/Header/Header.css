@@ -176,7 +176,8 @@ header a {
   padding-right: 9px;
 }
 .utilities-globe,
-.utilities-search,.utilities-menu{
+.utilities-search,
+.utilities-menu {
   height: 1rem;
   width: auto;
   padding: 0.65rem;
@@ -207,47 +208,70 @@ header a {
     align-self: center;
     background-size: 130%;
     position: relative;
-  
   }
   .utilities-menu.closed {
     background-image: url("https://ljc-dev.github.io/testing0/ham.svg");
   }
   .utilities-menu.open {
     background-image: url("https://ljc-dev.github.io/testing0/ham-close.svg");
+    z-index: 100;
   }
-  .utilities-menu.closed:before{
-    position:absolute;
-    content:"";
-    background-color:var(--pure-white);
-    height:5.15px;
+  .utilities-menu.closed:before {
+    position: absolute;
+    content: "";
+    background-color: var(--pure-white);
+    height: 5.15px;
     bottom: 53.4%;
-    left:0;
-    right:0;
+    left: 0;
+    right: 0;
   }
-  .utilities-menu.closed:after{
-    position:absolute;
-    content:"";
-    background-color:var(--pure-white);
+  .utilities-menu.closed:after {
+    position: absolute;
+    content: "";
+    background-color: var(--pure-white);
     height: 5.1px;
     bottom: 36.5%;
-    left:0;
-    right:0;
+    left: 0;
+    right: 0;
   }
-  .list-main-tabs,.list-sub-tabs-1{
-    position:absolute;
+  .sub-tab-1,
+  .sub-tab-2,.main-tab-link {
+    display: inline-block;
+    position: relative;
+    height:auto;
+    padding: inherit;
+    line-height: inherit;
+  }
+  .main-tab-link{
+    padding:0;
+  }
+  .list-main-tabs,
+  .list-sub-tabs-1 {
+    position: absolute;
     flex-direction: column;
-    width:300px;
-    background:var(--pure-white);
-    overflow-Y:scroll;
-    height:100vh;
+    width: 300px;
+    background: var(--pure-white);
+    overflow-y: scroll;
+    top: 0;
+    bottom: 0;
     justify-content: flex-start;
-    right:-300px;
-    transition: ease-in .3s;
+    right: -300px;
+    transition: ease-in 0.3s;
     overflow-x: hidden;
+    height: 100vh;
   }
-  .list-main-tabs.visible{
-    right:0;
-    z-index:1
+  .list-main-tabs.visible {
+    right: 0;
+    z-index: 1;
   }
-  
+  header li, .sub-tab-1,
+  .sub-tab-2{
+    line-height: 3.1rem;
+    padding: 0 0.75rem;
+  }
+  header li:first-child,
+  header li:first-child * {
+    background-color: var(--txt-black);
+    color: var(--pure-white);
+  }
 }
