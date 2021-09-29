@@ -1,12 +1,25 @@
 import { links } from "../Links";
 import { useState } from "react";
+import { useEffect } from "react";
 import SubMenuTwo from "./SubMenuTwo";
 export default function SubMenuOne({
   nextMenuMainTitle,
   setnextMenuMainTitle,
+  isMenuOpen,
+  setisMenuOpen,
 }) {
   const [nextSubMenuMainTitle, setnextSubMenuMainTitle] = useState("");
   const [isSubMenuTwoVisible, setisSubMenuTwoVisible] = useState(false);
+  useEffect(() => {
+    isMenuOpen === false && nextMenuMainTitle && setnextMenuMainTitle("");
+    setisSubMenuTwoVisible(false);
+    setnextSubMenuMainTitle("");
+  }, [
+    isMenuOpen,
+    nextMenuMainTitle,
+    setnextMenuMainTitle,
+    setnextSubMenuMainTitle,
+  ]);
 
   const showNextMenu = (e) => {
     if (e.target.nodeName.toLowerCase() !== "button") {
@@ -15,7 +28,6 @@ export default function SubMenuOne({
     }
   };
   const previousMenu = () => {
-    console.log("hit")
     setnextMenuMainTitle("");
   };
   let filteredTab = nextMenuMainTitle
@@ -44,6 +56,7 @@ export default function SubMenuOne({
               <a
                 className="main-tab-link has-submenu"
                 href={filteredTab[0].mainTab.link}
+                onClick = {()=>{alert("Thanks for clicking me, but I don't go anywhere 🤷");setisMenuOpen(false);}}
               >
                 {filteredTab[0].mainTab.title}
               </a>
@@ -60,8 +73,12 @@ export default function SubMenuOne({
                     <a
                       className="link_sub-tab-1"
                       href={subTab.link}
-                      target="_blank"
-                      rel="noreferrer"
+                      onClick={() => {
+                        alert(
+                          "Thanks for clicking me, but I don't go anywhere 🤷"
+                        );
+                        setisMenuOpen(false);
+                      }}
                     >
                       {subTab.title}
                     </a>
@@ -71,11 +88,16 @@ export default function SubMenuOne({
             )
           : null}
       </ul>
-      <SubMenuTwo
-        nextSubMenuMainTitle={nextSubMenuMainTitle}
-        filteredTab={filteredTab}
-        isSubMenuTwoVisible={isSubMenuTwoVisible}
-      />
+      {isMenuOpen ? (
+        <SubMenuTwo
+          setisMenuOpen={setisMenuOpen}
+          nextSubMenuMainTitle={nextSubMenuMainTitle}
+          filteredTab={filteredTab}
+          isSubMenuTwoVisible={isSubMenuTwoVisible}
+          setisSubMenuTwoVisible={setisSubMenuTwoVisible}
+          setnextSubMenuMainTitle={setnextSubMenuMainTitle}
+        />
+      ) : null}
     </div>
   );
 }
