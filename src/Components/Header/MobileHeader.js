@@ -19,7 +19,7 @@ export default function MobileHeader({ scrollDirection }) {
   };
   return (
     <header
-      className="header__main"
+      className={`header__main ${isMenuOpen?"menu__open":""}`}
     >
       <h1 className="logo">
         <a href="/" rel="home">

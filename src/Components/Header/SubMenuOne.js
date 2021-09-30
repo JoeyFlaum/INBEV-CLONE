@@ -66,7 +66,7 @@ export default function SubMenuOne({
         {filteredTab
           ? filteredTab[0].subTabs.map(
               (subTab, i /**if submenu exists, remove link */) => (
-                <li key={`${subTab.title}mobile${i}`} className={`sub-tab-1`}>
+                <li key={`${subTab.title}mobile${i}`} className={`sub-tab-1 ${subTab.subTabs?"mobile_has-submenu":""}`}>
                   {subTab.subTabs ? (
                     subTab.title
                   ) : (
