@@ -206,13 +206,7 @@ root {
     flex-direction: column;
     height:auto;
   }
-  .hero--paragraph-wrapper p{
-    font-size: calc(3.5rem * .50);
-    line-height: 2.5rem;
-    color: var(--pure-white);
-    text-align: unset;
-    margin: unset;
-  } 
+
   .hero__content-wrapper{
     flex-direction:column;
   }
@@ -239,4 +233,9 @@ root {
   }
 }
 
-
+@media screen and (max-width: 500px) {
+.hero--paragraph-wrapper p{
+  font-size: calc(3.5rem * .50);
+  line-height: 2.5rem;
+} 
+}
