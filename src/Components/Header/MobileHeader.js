@@ -9,11 +9,11 @@ import SubMenuOne from "./SubMenuOne";
 export default function MobileHeader({ scrollDirection }) {
   const [isMenuOpen, setisMenuOpen] = useState(false);
   const [nextMenuMainTitle, setnextMenuMainTitle] = useState("");
-  const [isSubMenuOpen, setisSubMenuOpen] = useState("");
 
   //on click show next menu
   //when next menu shows, parent U
   const showNextMenu = (e) => {
+    
     let text = e.target.innerText
     text!=="MENU"&&setnextMenuMainTitle(text.toString());
   };
