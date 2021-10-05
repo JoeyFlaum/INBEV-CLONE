@@ -1,7 +1,8 @@
 import NewsCard from "../NewsCard/NewsCard";
 import Social from "../Social";
 import "./Stories.css";
-import ShareArrow from "../../Assets/ShareArrow"
+import ShareArrow from "../../Assets/ShareArrow";
+import { Carousel } from "react-responsive-carousel";
 const content = [
   {
     title: "INNOVATION",
@@ -56,23 +57,32 @@ export default function Stories() {
   let newsCardArray = [];
   content.forEach((obj, i) =>
     newsCardArray.push(
-      <div className="stories_news-cards" key = {obj+i}>
+      <div className="stories_news-cards" key={obj + i}>
         <NewsCard content={obj} />
-        <span className = "stories_date">{obj.date}</span>
-        <i className = "stories_arrow">{<ShareArrow/>}</i>
+        <span className="stories_date">{obj.date}</span>
+        <i className="stories_arrow">{<ShareArrow />}</i>
       </div>
     )
   );
   return (
-    <div className = "stories__wrapper">
-    <section className="stories__container">
-      {newsCardArray.map((card,) => card)}
-      <div className="stories_news-cards social">
-        <p>Follow us on Social Media</p>
-        <Social fill="#FFFFFF"/>
-      </div>
-    </section>
-      <a href = "https://www.ab-inbev.com/news-media/" target="_blank" rel ="noreferrer" className = "stories__button">ALL STORIES</a>
+    <div className="stories__wrapper">
+      <section className="stories__container">
+      <Carousel autoPlay={false} axis ="horizontal" dynamicHeight ={false} centerMode = {true}>
+        {newsCardArray.map((card) => card)}
+        <div className="stories_news-cards social">
+          <p>Follow us on Social Media</p>
+          <Social fill="#FFFFFF" />
+        </div>
+      </Carousel>
+      </section>
+      <a
+        href="https://www.ab-inbev.com/news-media/"
+        target="_blank"
+        rel="noreferrer"
+        className="stories__button"
+      >
+        ALL STORIES
+      </a>
     </div>
   );
 }
