@@ -3,6 +3,7 @@ import Social from "../Social";
 import "./Stories.css";
 import ShareArrow from "../../Assets/ShareArrow";
 import { Carousel } from "react-responsive-carousel";
+import "react-responsive-carousel/lib/styles/carousel.min.css"
 const content = [
   {
     title: "INNOVATION",
@@ -53,7 +54,7 @@ const content = [
     date: "April 08, 2020",
   },
 ];
-export default function Stories() {
+export default function Stories({windowWidth}) {
   let newsCardArray = [];
   content.forEach((obj, i) =>
     newsCardArray.push(
@@ -64,16 +65,36 @@ export default function Stories() {
       </div>
     )
   );
+
+
+  
+
   return (
     <div className="stories__wrapper">
       <section className="stories__container">
-      <Carousel autoPlay={false} axis ="horizontal" dynamicHeight ={false} centerMode = {true}>
-        {newsCardArray.map((card) => card)}
-        <div className="stories_news-cards social">
-          <p>Follow us on Social Media</p>
-          <Social fill="#FFFFFF" />
-        </div>
-      </Carousel>
+        {windowWidth < 950 ? (
+          <Carousel
+            autoPlay={false}
+            axis="horizontal"
+            dynamicHeight={false}
+            centerMode={true}
+            showThumbs={false}
+          >
+            {newsCardArray.map((card) => card)}
+            <div className="stories_news-cards social">
+              <p>Follow us on Social Media</p>
+              <Social fill="#FFFFFF" />
+            </div>
+          </Carousel>
+        ) : (
+          <>
+            {newsCardArray.map((card) => card)}
+            <div className="stories_news-cards social">
+              <p>Follow us on Social Media</p>
+              <Social fill="#FFFFFF" />
+            </div>
+          </>
+        )}
       </section>
       <a
         href="https://www.ab-inbev.com/news-media/"
