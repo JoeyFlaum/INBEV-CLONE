@@ -3,4 +3,14 @@
     background-color: #636466a9;
     width:100vw;
     margin-top: 4rem;
+    position: relative;
+}
+.home-page__divider::before{
+    content:"";
+    position:absolute;
+    width: 100vw;
+    height:6rem;
+    top: -6rem;
+    z-index: -2;
+    background-color:#f8f8f8;
 }
