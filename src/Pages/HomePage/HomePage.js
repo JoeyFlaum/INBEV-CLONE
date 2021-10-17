@@ -4,6 +4,8 @@ import Mission from "../../Components/Mission/Mission"
 import Stories from "../../Components/Stories/Stories"
 import Footer from "../../Components/Footer/Footer"
 import MobileHeader from "../../Components/Header/MobileHeader"
+import MobileFooter from "../../Components/Footer/MobileFooter"
+
 import "./HomePage.css"
 import { useState } from "react"
 import { useEffect } from "react"
@@ -36,7 +38,7 @@ export default function HomePage(){
         <Mission/>
         <Stories windowWidth = {windowWidth}/>
         <div className = "home-page__divider"></div>
-        <Footer/>
+        {windowWidth>1250?<Footer/>:<MobileFooter/>}
         </>
         )
     

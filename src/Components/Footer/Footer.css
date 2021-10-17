@@ -106,3 +106,9 @@ footer .social__container a {
   width:100%;
   height:3.75rem;
 }
+@media screen and (max-width: 1250px)  {
+  .footer__main svg{
+    width: 15px;
+    height: 15px;
+  }
+}
