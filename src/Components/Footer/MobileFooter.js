@@ -13,7 +13,6 @@ export default function MobileFooter(){
                   />
                 </a>
         <Social fill="#000000"/>
-        
         </div>
         </footer>
     )
