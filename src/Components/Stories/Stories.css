@@ -14,7 +14,6 @@ root {
   display: flex;
   align-items: center;
   flex-direction: column;
-  background-color:#f8f8f8;
 }
 .stories__container {
   display: flex;
@@ -31,10 +30,9 @@ root {
 .stories_news-cards {
   width: 437px;
   height: 540px;
-  background-color: var(--pure-white);
   box-shadow: rgb(100 100 100 / 28%) 0px 2px 5px;
   margin: 1rem;
-  position: relative;
+  position:relative;
 }
 .stories_news-cards:hover img {
   transform: scale(90%);
@@ -61,18 +59,18 @@ root {
 .stories_date {
   padding: 2rem;
   font-size: 0.8125rem;
-  position: absolute;
-  bottom: 3rem;
-  color: var(--dark-grey);
+  position:absolute;
+  bottom:3rem;
+  color:var(--dark-grey)
 }
-.stories__wrapper .news-section__paragraph-container:after {
-  content: "";
-  background-color: rgba(169, 169, 169, 0.116);
-  height: 1px;
-  position: absolute;
-  left: 0;
-  right: 0;
-  bottom: 3.5rem;
+.stories__wrapper .news-section__paragraph-container:after{
+  content:"";
+  background-color:rgba(169, 169, 169, 0.116);
+  height:1px;
+  position:absolute;
+  left:0;
+  right:0;
+  bottom:3.5rem;
 }
 
 .stories_news-cards.social {
@@ -101,7 +99,7 @@ root {
   position: relative;
   display: inline-block;
   overflow: hidden;
-  mask-image: radial-gradient(#fff, #000);
+  -webkit-mask-image: -webkit-radial-gradient(#fff, #000);
   color: #fff;
   padding: 1.25em 3.5em;
   border: 0;
@@ -132,63 +130,8 @@ root {
   transition: transform 1s;
   backface-visibility: hidden;
 }
-.stories_arrow {
-  position: absolute;
-  bottom: 1rem;
-  right: 1rem;
-}
-
-@media screen and (max-width: 1250px) {
-
-  .stories__container {
-    display:block;
-    width:100vw;
-    max-width: unset;
-  }
-  .stories_news-cards{
-  width:unset;
-  max-width: 437px;
-  }
-  .stories__button{
-    margin-top: 6rem;
-  }
-  .slick-dots ul{
-    margin-bottom: -1rem;
-    padding-left:0;
-  }
-  .slick-arrow.slick-next *{
-    font-size: 30px;
-  }
-}
-@media screen and (max-width: 875px){
-  .stories_news-cards{
-height:480px;
-  }
-  .stories__container .news-section__snippet {
-    font-size: 1rem;
-    line-height:1.75rem;
-    
-  }
-  .stories__button{
-    margin-top: 8rem;
-  }
-  .stories_news-cards .social__container{
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    line-height: 3rem;
-    padding:.25rem;
-  }
-}
-
-
-@media screen and (max-width:350px){
-  .stories_news-cards{
-    height:430px;
-      }
-  .stories__container .news-section__snippet {
-    font-size: .8125rem;
-    line-height:1.5rem;
-    
-  }
+.stories_arrow{
+    position:absolute;
+    bottom:1rem;
+    right: 1rem;
 }
