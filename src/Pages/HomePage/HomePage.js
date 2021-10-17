@@ -34,7 +34,7 @@ export default function HomePage(){
         {windowWidth>1250?<Header scrollDirection ={scrollDirection}/> :<MobileHeader scrollDirection ={scrollDirection}/>}
         <Hero/>
         <Mission/>
-        <Stories windowWidth = {windowWidth}/>
+        <Stories/>
         <div className = "home-page__divider"></div>
         <Footer/>
         </>
