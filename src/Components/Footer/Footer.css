@@ -107,6 +107,18 @@ footer .social__container a {
   height:3.75rem;
 }
 @media screen and (max-width: 1250px)  {
+  .footer__container{
+    width:100vw;
+    align-items:center
+  }
+  .footer__image-logo{
+    width:7rem
+  }
+  .social__container{
+    width: 80%;
+    justify-content: space-between;
+    padding:2rem 3rem;
+  }
   .footer__main svg{
     width: 15px;
     height: 15px;
