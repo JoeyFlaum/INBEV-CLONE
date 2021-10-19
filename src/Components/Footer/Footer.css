@@ -123,4 +123,40 @@ footer .social__container a {
     width: 15px;
     height: 15px;
   }
+  .footer__bottom{
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction:column;
+    align-content:center;
+    margin-top:0;
+  }
+  .footer__bottom p,.footer__bottom a {
+    font-size:.75rem;
+    line-height:1.25rem;
+  }
+  .footer__bottom-section.two .footer__util-items {
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+  }
+  .footer__bottom-section p{
+    text-align: center;
+  }
+  .footer__util-item a{
+    display: flex;
+    justify-content: center;
+    align-items:center;
+  }
+  .footer__util-item{
+    line-height: 1.25rem;
+  }
+
+  .footer__ul-list{
+    align-items:center;
+  }
+  .footer__ul-list *{
+    
+    font-weight:700;
+  }
+
 }
