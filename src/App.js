@@ -8,7 +8,7 @@ function underage() {
 }
 
 export default function App() {
-  const [islegalAge, setisLegalAge] = useState(true);
+  const [islegalAge, setisLegalAge] = useState();
   const [loginAttempts, setloginAttempts] = useState(0);
   return (
     <div className="App">
