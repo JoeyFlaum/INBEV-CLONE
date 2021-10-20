@@ -27,7 +27,7 @@ export default function SubMenuTwo({
           isSubMenuTwoVisible ? "visible" : "hidden"
         }`}
       >
-        {nextSubMenuMainTitle && filteredSubTab.length>=1 ? (
+        {nextSubMenuMainTitle && filteredSubTab[0].subTabs ? (
           <li className="sub-tab-2">
             <div className="sub-menu-nav_container">
               <button
@@ -47,7 +47,7 @@ export default function SubMenuTwo({
             </div>
           </li>
         ) : null}
-        {nextSubMenuMainTitle && filteredSubTab.length>=1  
+        {nextSubMenuMainTitle && filteredSubTab[0].subTabs 
           ? filteredSubTab[0].subTabs.map((subTab, i) => (
               <li
                 key={`${subTab.title}mobile${i + 100}`}
