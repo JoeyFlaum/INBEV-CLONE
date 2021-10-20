@@ -6,7 +6,7 @@ export default function SubMenuTwo({
   setnextSubMenuMainTitle,
   setisMenuOpen,
 }) {
-  const previousMenu = () => {
+  const previousMenuOne = () => {
     setisSubMenuTwoVisible(false);
     setnextSubMenuMainTitle("");
   };
@@ -27,12 +27,12 @@ export default function SubMenuTwo({
           isSubMenuTwoVisible ? "visible" : "hidden"
         }`}
       >
-        {nextSubMenuMainTitle && filteredSubTab ? (
+        {nextSubMenuMainTitle && filteredSubTab.length>=1 ? (
           <li className="sub-tab-2">
             <div className="sub-menu-nav_container">
               <button
                 className="sub-tab-2_button back-button "
-                onClick={previousMenu}
+                onClick={previousMenuOne}
               >{`<`}</button>
               <a
                 className="main-tab-link has-submenu"
