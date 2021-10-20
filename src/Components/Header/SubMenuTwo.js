@@ -47,7 +47,7 @@ export default function SubMenuTwo({
             </div>
           </li>
         ) : null}
-        {nextSubMenuMainTitle && filteredSubTab
+        {nextSubMenuMainTitle && filteredSubTab.length>=1 
           ? filteredSubTab[0].subTabs.map((subTab, i) => (
               <li
                 key={`${subTab.title}mobile${i + 100}`}
