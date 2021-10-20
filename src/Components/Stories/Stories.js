@@ -101,8 +101,8 @@ export default function Stories({ windowWidth }) {
       <section className="stories__container">
         {windowWidth < 1250 ? (
           <Slider {...settings}>
-            {newsCardArray.map((card) => (
-              <div className="slider_card_container">{card}</div>
+            {newsCardArray.map((card, i) => (
+              <div className="slider_card_container" key={card + i}>{card}</div>
             ))}
             <div className="slider_card_container">
               <div className="stories_news-cards social">
@@ -113,8 +113,8 @@ export default function Stories({ windowWidth }) {
           </Slider>
         ) : (
           <>
-            {newsCardArray.map((card) => (
-              <div className="slider_card_container">{card}</div>
+            {newsCardArray.map((card, i) => (
+              <div className="slider_card_container" key={card + i}>{card}</div>
             ))}
             <div className="slider_card_container">
               <div className="stories_news-cards social">
