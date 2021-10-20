@@ -37,7 +37,6 @@ export default function SubMenuOne({
         );
       })
     : undefined;
-  console.log(nextSubMenuMainTitle);
   return (
     <div
       className={`sub-tabs-1_container ${filteredTab ? "visible" : "hidden"}`}
