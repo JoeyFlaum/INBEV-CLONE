@@ -16,7 +16,8 @@ export default function SubMenuTwo({
           subTab.title.toLowerCase() === nextSubMenuMainTitle.toLowerCase()
       )
     : undefined;
-  return (
+
+ return (
     <div
       className={`sub-tabs-2_container ${
         isSubMenuTwoVisible ? "visible" : "hidden"
@@ -46,14 +47,16 @@ export default function SubMenuTwo({
               </a>
             </div>
           </li>
-        ) : null}
-        {nextSubMenuMainTitle && filteredSubTab[0].subTabs 
+        ) : (
+          null
+        )}
+        {nextSubMenuMainTitle && filteredSubTab[0].subTabs
           ? filteredSubTab[0].subTabs.map((subTab, i) => (
               <li
                 key={`${subTab.title}mobile${i + 100}`}
                 className={`sub-tab-2`}
               >
-                <a
+                <a className = "link_sub-tab-2"
                   href={subTab.link}
                   onClick={() => {
                     alert("Thanks for clicking me, but I don't go anywhere 🤷");

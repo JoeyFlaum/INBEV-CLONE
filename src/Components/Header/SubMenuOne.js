@@ -22,7 +22,7 @@ export default function SubMenuOne({
   ]);
 
   const showNextMenu = (e) => {
-    if (e.target.nodeName.toLowerCase() !== "button") {
+    if (e.target.nodeName.toLowerCase() !== "button" && e.target.tagName.toLowerCase() !=="ul") {
       setnextSubMenuMainTitle(e.target.innerText.toString());
       setisSubMenuTwoVisible(true);
     }
@@ -77,6 +77,7 @@ export default function SubMenuOne({
                           "Thanks for clicking me, but I don't go anywhere 🤷"
                         );
                         setisMenuOpen(false);
+                        setisSubMenuTwoVisible(false)
                       }}
                     >
                       {subTab.title}
