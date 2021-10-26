@@ -1,5 +1,5 @@
-import countryData from "./CountryData";
-import drinkingAgeByCounty from "./DrinkingAgeByCountry";
+import {countryData} from "./CountryData";
+import {drinkingAgeByCounty} from "./DrinkingAgeByCountry";
 
 export default function countries() {
   let countriesCombined = [];
