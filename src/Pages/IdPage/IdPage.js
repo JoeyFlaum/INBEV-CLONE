@@ -1,72 +1,38 @@
 import "./IdPage.css";
 import { useState } from "react";
-import countries from "./CountriesCombined"; //TO DO: Countries function re-renders on all updates. Only needed once.
+import countries from "./CountriesCombined";
 import AgeGate from "./AgeGate";
+import { formData } from "./FormData";
 import ColorStrip from "../../Assets/ColorStrip";
+import AgeGateQuestion from "./AgeGateQuestion";
 
-let months = [
-  "January",
-  "February",
-  "March",
-  "April",
-  "May",
-  "June",
-  "July",
-  "August",
-  "September",
-  "October",
-  "November",
-  "December",
-];
-
-const getYears = () => {
-  const currentDate = new Date().getFullYear(); //current year
-  let years = [currentDate];
-  for (let i = 1; i < 100; i++) {
-    years.push(currentDate - i); //adds 99 prior years to years array
-  }
-  return years;
-};
-export default function IdPage({ isLegalAge, formSubmitted,loginAttempts,setloginAttempts}) {
-  //pass in function from App.js
+export default function IdPage({
+  setisLegalAge,//pass in state from App.js
+  isLegalAge,//pass in state from App.js
+  loginAttempts,//pass in state from App.js
+  setloginAttempts,//pass in state from App.js
+}) {
+  //state is set from form fields
   const [day, setDay] = useState("");
   const [month, setMonth] = useState("");
   const [year, setYear] = useState("");
   const [country, setCountry] = useState("");
   const [legalAge, setLegalAge] = useState("");
+
+  
+  
+
   return (
     <main id="id-page">
       <div className="background-image id-page"></div>
       <div className="id-wrapper">
-        {formSubmitted === undefined || formSubmitted ? (// formSubmitted is undefined by default, true if old enough to enter, false if underage
-          <>
-            <h1>Can we see some ID?</h1>
-            <p>
-              As part of our commitment to responsible drinking,
-              <br />
-              please confirm you are of legal drinking age.
-            </p>
-          </>
-        ) : (
-          <>
-            <h1>
-              Sorry,{" "}
-              {legalAge || legalAge === 0
-                ? `you must be ${legalAge} or older to view this site`
-                : `drinking is not legal in ${
-                    countries().filter(
-                      (arrayItem) => arrayItem.code === country
-                    )[0].name
-                  }`}
-            </h1>
-            <p></p>
-          </>
-        )}
+        <AgeGateQuestion legalAge = {legalAge} isLegalAge = {isLegalAge} country={country} />
         <form
           onSubmit={(e) => {
             e.preventDefault();
             AgeGate({
-              isLegalAge,
+              //checks legal age of form user
+              setisLegalAge,
               day,
               month,
               year,
@@ -74,7 +40,7 @@ export default function IdPage({ isLegalAge, formSubmitted,loginAttempts,setlogi
               countries,
               setLegalAge,
               loginAttempts,
-              setloginAttempts
+              setloginAttempts,
             });
           }}
         >
@@ -83,7 +49,7 @@ export default function IdPage({ isLegalAge, formSubmitted,loginAttempts,setlogi
             className="locations"
             onChange={(e) => {
               setCountry(e.target.value);
-              isLegalAge(undefined)//resets form to original state variable that gets reset is "formSubmitted"
+              setisLegalAge(undefined); //resets form to original state variable that gets reset is "isLegalAge"
             }}
           >
             <option value="">Location</option>
@@ -104,7 +70,7 @@ export default function IdPage({ isLegalAge, formSubmitted,loginAttempts,setlogi
               onChange={(e) => setMonth(e.target.value)}
             >
               <option value="">Month</option>
-              {months.map((month, i) => {
+              {formData.months.map((month, i) => {
                 return (
                   <option key={month + i} value={i}>
                     {month}
@@ -135,8 +101,8 @@ export default function IdPage({ isLegalAge, formSubmitted,loginAttempts,setlogi
               onChange={(e) => setYear(e.target.value)}
             >
               <option value="">Year</option>
-              {[...getYears()].map((year) => {
-                //[getYears][0] also works
+              {[...formData.getYears()].map((year) => {
+                //[formData.getYears][0] also works
                 return (
                   <option key={year} value={year}>
                     {year}
@@ -148,7 +114,7 @@ export default function IdPage({ isLegalAge, formSubmitted,loginAttempts,setlogi
           <button className="enter-site">ENTER</button>
         </form>
         <p>Enjoy Responsibly</p>
-        <footer className = "footer_id-page">
+        <footer className="footer_id-page">
           <p>
             By submitting this form, you agree to be bound by the Terms of
             Service and Privacy Policy
@@ -181,7 +147,7 @@ export default function IdPage({ isLegalAge, formSubmitted,loginAttempts,setlogi
           </div>
           <p>© 2021 Anheuser-Busch Companies LLC, St. Louis, MO 63118</p>
         </footer>
-        <ColorStrip additionalClassName = "fixed-bottom"/>
+        <ColorStrip additionalClassName="fixed-bottom" />
       </div>
     </main>
   );
