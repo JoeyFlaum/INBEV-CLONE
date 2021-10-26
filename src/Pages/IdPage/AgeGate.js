@@ -1,5 +1,6 @@
 
-export default function AgeGate ({setisLegalAge,day, month, year, country,countries,setLegalAge, loginAttempts,setloginAttempts}){
+import countries from "./CountriesCombined";
+export default function AgeGate ({setisLegalAge,day, month, year, country,setLegalAge, loginAttempts,setloginAttempts}){
         if([day,month,year,country].filter(param=>param).length !== 4){return alert("All fields are required")}//gate for blank fields
         setloginAttempts(loginAttempts+1)//tracks the amount of underage logins that have been attempted. Sends to App.js through IdPage.
         

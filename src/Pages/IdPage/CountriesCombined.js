@@ -1,7 +1,7 @@
 import countryData from "./CountryData";
 import drinkingAgeByCounty from "./DrinkingAgeByCountry";
 
-function countries() {
+export default function countries() {
   let countriesCombined = [];
   //flatten array
   let countryAge = Object.values(drinkingAgeByCounty).reduce((a, b) =>
@@ -17,4 +17,3 @@ function countries() {
   return countriesCombined;
 }
 
-export default countries;
