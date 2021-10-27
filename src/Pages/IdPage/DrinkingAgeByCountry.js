@@ -1,4 +1,4 @@
-const drinkingAgeByCounty = {
+export const drinkingAgeByCounty = {
 	Africa: [
 		{
 			code: "DZ",
@@ -895,4 +895,3 @@ const drinkingAgeByCounty = {
     },
   ],
 };
-export default drinkingAgeByCounty;

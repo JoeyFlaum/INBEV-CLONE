@@ -8,15 +8,15 @@ function underage() {
 }
 
 export default function App() {
-  const [islegalAge, setisLegalAge] = useState();
+  const [isLegalAge, setisLegalAge] = useState();
   const [loginAttempts, setloginAttempts] = useState(0);
   return (
     <div className="App">
-      {islegalAge!==false || loginAttempts !== 2 ? (
-        !islegalAge ? (
+      {isLegalAge!==false || loginAttempts !== 2 ? (
+        !isLegalAge ? (
           <IdPage
-            isLegalAge={setisLegalAge}
-            formSubmitted={islegalAge}
+            setisLegalAge={setisLegalAge}
+            isLegalAge={isLegalAge}
             loginAttempts={loginAttempts}
             setloginAttempts ={setloginAttempts}
           />
