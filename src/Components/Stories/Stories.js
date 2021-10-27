@@ -73,11 +73,12 @@ export default function Stories({ windowWidth }) {
     swipeToSlide: true,
     nextArrow: <SampleNextArrow />,
     prevArrow: <SamplePrevArrow />,
-    appendDots: (dots) => (
-      <div style={{}}>
-        <ul style={{}}> {dots} </ul>
-      </div>
-    ),
+    // option to change dot style
+    // appendDots: (dots) => ( 
+    //   <div style={{}}>
+    //     <ul style={{}}> {dots} </ul>
+    //   </div>
+    // ),
     responsive: [
       {
         breakpoint: 1250,

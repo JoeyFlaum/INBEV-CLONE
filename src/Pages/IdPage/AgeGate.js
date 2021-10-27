@@ -23,7 +23,7 @@ export default function AgeGate({
   const today = new Date().getTime();
   const ageCheck = Math.floor(
     (today - userAge) / (1000 * 60 * 60 * 24 * 365.25)
-  );
+    );
   if (countryDrinkAge === null) {
     return setisLegalAge(false);
   } else {
